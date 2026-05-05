@@ -6,7 +6,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <AdvantageItem
           v-for="item in advantagesList"
-          :key="item.id"
+          :key="item.label"
           :img="item.img"
           :label="item.label"
           :text="item.text"

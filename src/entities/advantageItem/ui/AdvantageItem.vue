@@ -6,22 +6,14 @@
       v-if="img"
     />
     <h3 class="text-xl font-semibold tracking-tight mt-2">{{ label }}</h3>
-    <p class="text-sm text-gray-400 leading-relaxed max-w-[280px]">
+    <p class="text-sm text-gray-400 leading-relaxed max-w-280px">
       {{ text }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  img: String,
-  label: {
-    type: String,
-    required: true,
-  },
-  text: {
-    type: String,
-    required: true,
-  },
-})
+import type { IAdvantageItem } from '../model/types.ts'
+
+defineProps<IAdvantageItem>()
 </script>
