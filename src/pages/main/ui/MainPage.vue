@@ -4,12 +4,14 @@ import { Footer } from '@/widgets/footer/index'
 import { Advantages } from '@/widgets/advantages/index'
 import { PricingBlock } from '@/widgets/pricing/index'
 import { DiscountBlock } from '@/widgets/discount'
+import { CatalogBlock } from '@/widgets/catalog'
 </script>
 
 <template>
   <div class="page">
     <Navbar />
     <Advantages />
+    <CatalogBlock />
     <PricingBlock />
     <DiscountBlock />
     <Footer />
