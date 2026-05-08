@@ -13,11 +13,11 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "gen:API": "orval"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
-    "axios": "^1.16.0",
     "pinia": "^3.0.4",
     "swiper": "^12.1.4",
     "tailwindcss": "^4.2.4",
@@ -33,6 +33,7 @@
     "@vue/eslint-config-typescript": "^14.7.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.9.1",
+    "axios": "^1.16.0",
     "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-oxlint": "~1.60.0",
@@ -40,6 +41,7 @@
     "jiti": "^2.6.1",
     "jsdom": "^29.0.2",
     "npm-run-all2": "^8.0.4",
+    "orval": "^8.9.1",
     "oxlint": "~1.60.0",
     "prettier": "3.8.3",
     "typescript": "~6.0.0",
