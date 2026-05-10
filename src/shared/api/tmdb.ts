@@ -275,2349 +275,2353 @@ import type {
 } from '../model/types';
 
 import { tmdbClient } from './tmdbClient';
-export const getTmdbApi = () => {
-/**
+import type { BodyType } from './tmdbClient';
+
+
+type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
+
+
+  /**
  * Test your API Key to see if it's valid.
  * @summary Validate Key
  */
-const authenticationValidateKey = (
+export const authenticationValidateKey = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AuthenticationValidateKey200>>,) => {
       return tmdbClient<AuthenticationValidateKey200>(
       {url: `https://api.themoviedb.org/3/authentication`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the public details of an account on TMDB.
  * @summary Details
  */
-const accountDetails = (
+export const accountDetails = (
     accountId: number,
     params?: AccountDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountDetails200>>,) => {
       return tmdbClient<AccountDetails200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Mark a movie or TV show as a favourite.
  * @summary Add Favorite
  */
-const accountAddFavorite = (
+export const accountAddFavorite = (
     accountId: number,
-    accountAddFavoriteBody?: AccountAddFavoriteBody,
+    accountAddFavoriteBody?: BodyType<AccountAddFavoriteBody>,
     params?: AccountAddFavoriteParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountAddFavorite200>>,) => {
       return tmdbClient<AccountAddFavorite200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/favorite`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: accountAddFavoriteBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Add a movie or TV show to your watchlist.
  * @summary Add To Watchlist
  */
-const accountAddToWatchlist = (
+export const accountAddToWatchlist = (
     accountId: number,
-    accountAddToWatchlistBody?: AccountAddToWatchlistBody,
+    accountAddToWatchlistBody?: BodyType<AccountAddToWatchlistBody>,
     params?: AccountAddToWatchlistParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountAddToWatchlist200>>,) => {
       return tmdbClient<AccountAddToWatchlist200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/watchlist`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: accountAddToWatchlistBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of favourite movies.
  * @summary Favorite Movies
  */
-const accountGetFavorites = (
+export const accountGetFavorites = (
     accountId: number,
     params?: AccountGetFavoritesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountGetFavorites200>>,) => {
       return tmdbClient<AccountGetFavorites200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/favorite/movies`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of favourite TV shows.
  * @summary Favorite TV
  */
-const accountFavoriteTv = (
+export const accountFavoriteTv = (
     accountId: number,
     params?: AccountFavoriteTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountFavoriteTv200>>,) => {
       return tmdbClient<AccountFavoriteTv200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/favorite/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of custom lists.
  * @summary Lists
  */
-const accountLists = (
+export const accountLists = (
     accountId: number,
     params?: AccountListsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountLists200>>,) => {
       return tmdbClient<AccountLists200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/lists`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of rated movies.
  * @summary Rated Movies
  */
-const accountRatedMovies = (
+export const accountRatedMovies = (
     accountId: number,
     params?: AccountRatedMoviesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountRatedMovies200>>,) => {
       return tmdbClient<AccountRatedMovies200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/rated/movies`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of rated TV shows.
  * @summary Rated TV
  */
-const accountRatedTv = (
+export const accountRatedTv = (
     accountId: number,
     params?: AccountRatedTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountRatedTv200>>,) => {
       return tmdbClient<AccountRatedTv200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/rated/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a users list of rated TV episodes.
  * @summary Rated TV Episodes
  */
-const accountRatedTvEpisodes = (
+export const accountRatedTvEpisodes = (
     accountId: number,
     params?: AccountRatedTvEpisodesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountRatedTvEpisodes200>>,) => {
       return tmdbClient<AccountRatedTvEpisodes200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/rated/tv/episodes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of movies added to a users watchlist.
  * @summary Watchlist Movies
  */
-const accountWatchlistMovies = (
+export const accountWatchlistMovies = (
     accountId: number,
     params?: AccountWatchlistMoviesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountWatchlistMovies200>>,) => {
       return tmdbClient<AccountWatchlistMovies200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/watchlist/movies`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of TV shows added to a users watchlist.
  * @summary Watchlist TV
  */
-const accountWatchlistTv = (
+export const accountWatchlistTv = (
     accountId: number,
     params?: AccountWatchlistTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AccountWatchlistTv200>>,) => {
       return tmdbClient<AccountWatchlistTv200>(
       {url: `https://api.themoviedb.org/3/account/${accountId}/watchlist/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Create Guest Session
  */
-const authenticationCreateGuestSession = (
+export const authenticationCreateGuestSession = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AuthenticationCreateGuestSession200>>,) => {
       return tmdbClient<AuthenticationCreateGuestSession200>(
       {url: `https://api.themoviedb.org/3/authentication/guest_session/new`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary Create Request Token
  */
-const authenticationCreateRequestToken = (
+export const authenticationCreateRequestToken = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AuthenticationCreateRequestToken200>>,) => {
       return tmdbClient<AuthenticationCreateRequestToken200>(
       {url: `https://api.themoviedb.org/3/authentication/token/new`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary Create Session
  */
-const authenticationCreateSession = (
-    authenticationCreateSessionBody?: AuthenticationCreateSessionBody,
- ) => {
+export const authenticationCreateSession = (
+    authenticationCreateSessionBody?: BodyType<AuthenticationCreateSessionBody>,
+ options?: SecondParameter<typeof tmdbClient<AuthenticationCreateSession200>>,) => {
       return tmdbClient<AuthenticationCreateSession200>(
       {url: `https://api.themoviedb.org/3/authentication/session/new`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: authenticationCreateSessionBody
     },
-      );
+      options);
     }
 
 /**
  * @summary Create Session (from v4 token)
  */
-const authenticationCreateSessionFromV4Token = (
-    authenticationCreateSessionFromV4TokenBody?: AuthenticationCreateSessionFromV4TokenBody,
- ) => {
+export const authenticationCreateSessionFromV4Token = (
+    authenticationCreateSessionFromV4TokenBody?: BodyType<AuthenticationCreateSessionFromV4TokenBody>,
+ options?: SecondParameter<typeof tmdbClient<AuthenticationCreateSessionFromV4Token200>>,) => {
       return tmdbClient<AuthenticationCreateSessionFromV4Token200>(
       {url: `https://api.themoviedb.org/3/authentication/session/convert/4`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: authenticationCreateSessionFromV4TokenBody
     },
-      );
+      options);
     }
 
 /**
  * This method allows an application to validate a request token by entering a username and password.
  * @summary Create Session (with login)
  */
-const authenticationCreateSessionFromLogin = (
-    authenticationCreateSessionFromLoginBody?: AuthenticationCreateSessionFromLoginBody,
- ) => {
+export const authenticationCreateSessionFromLogin = (
+    authenticationCreateSessionFromLoginBody?: BodyType<AuthenticationCreateSessionFromLoginBody>,
+ options?: SecondParameter<typeof tmdbClient<AuthenticationCreateSessionFromLogin200>>,) => {
       return tmdbClient<AuthenticationCreateSessionFromLogin200>(
       {url: `https://api.themoviedb.org/3/authentication/token/validate_with_login`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: authenticationCreateSessionFromLoginBody
     },
-      );
+      options);
     }
 
 /**
  * @summary Delete Session
  */
-const authenticationDeleteSession = (
-    authenticationDeleteSessionBody?: AuthenticationDeleteSessionBody,
- ) => {
+export const authenticationDeleteSession = (
+    authenticationDeleteSessionBody?: BodyType<AuthenticationDeleteSessionBody>,
+ options?: SecondParameter<typeof tmdbClient<AuthenticationDeleteSession200>>,) => {
       return tmdbClient<AuthenticationDeleteSession200>(
       {url: `https://api.themoviedb.org/3/authentication/session`, method: 'DELETE',
       headers: {'Content-Type': 'application/json', },
       data: authenticationDeleteSessionBody
     },
-      );
+      options);
     }
 
 /**
  * Get an up to date list of the officially supported movie certifications on TMDB.
  * @summary Movie Certifications
  */
-const certificationMovieList = (
+export const certificationMovieList = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CertificationMovieList200>>,) => {
       return tmdbClient<CertificationMovieList200>(
       {url: `https://api.themoviedb.org/3/certification/movie/list`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary TV Certifications
  */
-const certificationsTvList = (
+export const certificationsTvList = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CertificationsTvList200>>,) => {
       return tmdbClient<CertificationsTvList200>(
       {url: `https://api.themoviedb.org/3/certification/tv/list`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get a list of all of the movie ids that have been changed in the past 24 hours.
  * @summary Movie List
  */
-const changesMovieList = (
+export const changesMovieList = (
     params?: ChangesMovieListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ChangesMovieList200>>,) => {
       return tmdbClient<ChangesMovieList200>(
       {url: `https://api.themoviedb.org/3/movie/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary People List
  */
-const changesPeopleList = (
+export const changesPeopleList = (
     params?: ChangesPeopleListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ChangesPeopleList200>>,) => {
       return tmdbClient<ChangesPeopleList200>(
       {url: `https://api.themoviedb.org/3/person/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary TV List
  */
-const changesTvList = (
+export const changesTvList = (
     params?: ChangesTvListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ChangesTvList200>>,) => {
       return tmdbClient<ChangesTvList200>(
       {url: `https://api.themoviedb.org/3/tv/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get collection details by ID.
  * @summary Details
  */
-const collectionDetails = (
+export const collectionDetails = (
     collectionId: number,
     params?: CollectionDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CollectionDetails200>>,) => {
       return tmdbClient<CollectionDetails200>(
       {url: `https://api.themoviedb.org/3/collection/${collectionId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the images that belong to a collection.
  * @summary Images
  */
-const collectionImages = (
+export const collectionImages = (
     collectionId: number,
     params?: CollectionImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CollectionImages200>>,) => {
       return tmdbClient<CollectionImages200>(
       {url: `https://api.themoviedb.org/3/collection/${collectionId}/images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Translations
  */
-const collectionTranslations = (
+export const collectionTranslations = (
     collectionId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CollectionTranslations200>>,) => {
       return tmdbClient<CollectionTranslations200>(
       {url: `https://api.themoviedb.org/3/collection/${collectionId}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the company details by ID.
  * @summary Details
  */
-const companyDetails = (
+export const companyDetails = (
     companyId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CompanyDetails200>>,) => {
       return tmdbClient<CompanyDetails200>(
       {url: `https://api.themoviedb.org/3/company/${companyId}`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the company details by ID.
  * @summary Alternative Names
  */
-const companyAlternativeNames = (
+export const companyAlternativeNames = (
     companyId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CompanyAlternativeNames200>>,) => {
       return tmdbClient<CompanyAlternativeNames200>(
       {url: `https://api.themoviedb.org/3/company/${companyId}/alternative_names`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the company logos by id.
  * @summary Images
  */
-const companyImages = (
+export const companyImages = (
     companyId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CompanyImages200>>,) => {
       return tmdbClient<CompanyImages200>(
       {url: `https://api.themoviedb.org/3/company/${companyId}/images`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Query the API configuration details.
  * @summary Details
  */
-const configurationDetails = (
+export const configurationDetails = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ConfigurationDetails200>>,) => {
       return tmdbClient<ConfigurationDetails200>(
       {url: `https://api.themoviedb.org/3/configuration`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the list of countries (ISO 3166-1 tags) used throughout TMDB.
  * @summary Countries
  */
-const configurationCountries = (
+export const configurationCountries = (
     params?: ConfigurationCountriesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ConfigurationCountries200Item[]>>,) => {
       return tmdbClient<ConfigurationCountries200Item[]>(
       {url: `https://api.themoviedb.org/3/configuration/countries`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of the jobs and departments we use on TMDB.
  * @summary Jobs
  */
-const configurationJobs = (
+export const configurationJobs = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ConfigurationJobs200Item[]>>,) => {
       return tmdbClient<ConfigurationJobs200Item[]>(
       {url: `https://api.themoviedb.org/3/configuration/jobs`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the list of languages (ISO 639-1 tags) used throughout TMDB.
  * @summary Languages
  */
-const configurationLanguages = (
+export const configurationLanguages = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ConfigurationLanguages200Item[]>>,) => {
       return tmdbClient<ConfigurationLanguages200Item[]>(
       {url: `https://api.themoviedb.org/3/configuration/languages`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get a list of the officially supported translations on TMDB.
  * @summary Primary Translations
  */
-const configurationPrimaryTranslations = (
+export const configurationPrimaryTranslations = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<string[]>>,) => {
       return tmdbClient<string[]>(
       {url: `https://api.themoviedb.org/3/configuration/primary_translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the list of timezones used throughout TMDB.
  * @summary Timezones
  */
-const configurationTimezones = (
+export const configurationTimezones = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ConfigurationTimezones200Item[]>>,) => {
       return tmdbClient<ConfigurationTimezones200Item[]>(
       {url: `https://api.themoviedb.org/3/configuration/timezones`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get a movie or TV credit details by ID.
  * @summary Details
  */
-const creditDetails = (
+export const creditDetails = (
     creditId: string,
     params?: CreditDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<CreditDetails200>>,) => {
       return tmdbClient<CreditDetails200>(
       {url: `https://api.themoviedb.org/3/credit/${creditId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Find movies using over 30 filters and sort options.
  * @summary Movie
  */
-const discoverMovie = (
+export const discoverMovie = (
     params?: DiscoverMovieParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<DiscoverMovie200>>,) => {
       return tmdbClient<DiscoverMovie200>(
       {url: `https://api.themoviedb.org/3/discover/movie`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Find TV shows using over 30 filters and sort options.
  * @summary TV
  */
-const discoverTv = (
+export const discoverTv = (
     params?: DiscoverTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<DiscoverTv200>>,) => {
       return tmdbClient<DiscoverTv200>(
       {url: `https://api.themoviedb.org/3/discover/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Find data by external ID's.
  * @summary Find By ID
  */
-const findById = (
+export const findById = (
     externalId: string,
     params: FindByIdParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<FindById200>>,) => {
       return tmdbClient<FindById200>(
       {url: `https://api.themoviedb.org/3/find/${externalId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of official genres for movies.
  * @summary Movie List
  */
-const genreMovieList = (
+export const genreMovieList = (
     params?: GenreMovieListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<GenreMovieList200>>,) => {
       return tmdbClient<GenreMovieList200>(
       {url: `https://api.themoviedb.org/3/genre/movie/list`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of official genres for TV shows.
  * @summary TV List
  */
-const genreTvList = (
+export const genreTvList = (
     params?: GenreTvListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<GenreTvList200>>,) => {
       return tmdbClient<GenreTvList200>(
       {url: `https://api.themoviedb.org/3/genre/tv/list`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rated movies for a guest session.
  * @summary Rated Movies
  */
-const guestSessionRatedMovies = (
+export const guestSessionRatedMovies = (
     guestSessionId: string,
     params?: GuestSessionRatedMoviesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<GuestSessionRatedMovies200>>,) => {
       return tmdbClient<GuestSessionRatedMovies200>(
       {url: `https://api.themoviedb.org/3/guest_session/${guestSessionId}/rated/movies`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rated TV shows for a guest session.
  * @summary Rated TV
  */
-const guestSessionRatedTv = (
+export const guestSessionRatedTv = (
     guestSessionId: string,
     params?: GuestSessionRatedTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<GuestSessionRatedTv200>>,) => {
       return tmdbClient<GuestSessionRatedTv200>(
       {url: `https://api.themoviedb.org/3/guest_session/${guestSessionId}/rated/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rated TV episodes for a guest session.
  * @summary Rated TV Episodes
  */
-const guestSessionRatedTvEpisodes = (
+export const guestSessionRatedTvEpisodes = (
     guestSessionId: string,
     params?: GuestSessionRatedTvEpisodesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<GuestSessionRatedTvEpisodes200>>,) => {
       return tmdbClient<GuestSessionRatedTvEpisodes200>(
       {url: `https://api.themoviedb.org/3/guest_session/${guestSessionId}/rated/tv/episodes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Details
  */
-const keywordDetails = (
+export const keywordDetails = (
     keywordId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<KeywordDetails200>>,) => {
       return tmdbClient<KeywordDetails200>(
       {url: `https://api.themoviedb.org/3/keyword/${keywordId}`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary Movies
  */
-const keywordMovies = (
+export const keywordMovies = (
     keywordId: string,
     params?: KeywordMoviesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<KeywordMovies200>>,) => {
       return tmdbClient<KeywordMovies200>(
       {url: `https://api.themoviedb.org/3/keyword/${keywordId}/movies`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Add a movie to a list.
  * @summary Add Movie
  */
-const listAddMovie = (
+export const listAddMovie = (
     listId: number,
     params: ListAddMovieParams,
-    listAddMovieBody?: ListAddMovieBody,
- ) => {
+    listAddMovieBody?: BodyType<ListAddMovieBody>,
+ options?: SecondParameter<typeof tmdbClient<ListAddMovie200>>,) => {
       return tmdbClient<ListAddMovie200>(
       {url: `https://api.themoviedb.org/3/list/${listId}/add_item`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: listAddMovieBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Use this method to check if an item has already been added to the list.
  * @summary Check Item Status
  */
-const listCheckItemStatus = (
+export const listCheckItemStatus = (
     listId: number,
     params?: ListCheckItemStatusParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ListCheckItemStatus200>>,) => {
       return tmdbClient<ListCheckItemStatus200>(
       {url: `https://api.themoviedb.org/3/list/${listId}/item_status`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Clear all items from a list.
  * @summary Clear
  */
-const listClear = (
+export const listClear = (
     listId: number,
     params: ListClearParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ListClear200>>,) => {
       return tmdbClient<ListClear200>(
       {url: `https://api.themoviedb.org/3/list/${listId}/clear`, method: 'POST',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Create
  */
-const listCreate = (
+export const listCreate = (
     params: ListCreateParams,
-    listCreateBody?: ListCreateBody,
- ) => {
+    listCreateBody?: BodyType<ListCreateBody>,
+ options?: SecondParameter<typeof tmdbClient<ListCreate200>>,) => {
       return tmdbClient<ListCreate200>(
       {url: `https://api.themoviedb.org/3/list`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: listCreateBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Delete a list.
  * @summary Delete
  */
-const listDelete = (
+export const listDelete = (
     listId: number,
     params: ListDeleteParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ListDelete200>>,) => {
       return tmdbClient<ListDelete200>(
       {url: `https://api.themoviedb.org/3/list/${listId}`, method: 'DELETE',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Details
  */
-const listDetails = (
+export const listDetails = (
     listId: number,
     params?: ListDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ListDetails200>>,) => {
       return tmdbClient<ListDetails200>(
       {url: `https://api.themoviedb.org/3/list/${listId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Remove a movie from a list.
  * @summary Remove Movie
  */
-const listRemoveMovie = (
+export const listRemoveMovie = (
     listId: number,
     params: ListRemoveMovieParams,
-    listRemoveMovieBody?: ListRemoveMovieBody,
- ) => {
+    listRemoveMovieBody?: BodyType<ListRemoveMovieBody>,
+ options?: SecondParameter<typeof tmdbClient<ListRemoveMovie200>>,) => {
       return tmdbClient<ListRemoveMovie200>(
       {url: `https://api.themoviedb.org/3/list/${listId}/remove_item`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: listRemoveMovieBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of movies that are currently in theatres.
  * @summary Now Playing
  */
-const movieNowPlayingList = (
+export const movieNowPlayingList = (
     params?: MovieNowPlayingListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieNowPlayingList200>>,) => {
       return tmdbClient<MovieNowPlayingList200>(
       {url: `https://api.themoviedb.org/3/movie/now_playing`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of movies ordered by popularity.
  * @summary Popular
  */
-const moviePopularList = (
+export const moviePopularList = (
     params?: MoviePopularListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MoviePopularList200>>,) => {
       return tmdbClient<MoviePopularList200>(
       {url: `https://api.themoviedb.org/3/movie/popular`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of movies ordered by rating.
  * @summary Top Rated
  */
-const movieTopRatedList = (
+export const movieTopRatedList = (
     params?: MovieTopRatedListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieTopRatedList200>>,) => {
       return tmdbClient<MovieTopRatedList200>(
       {url: `https://api.themoviedb.org/3/movie/top_rated`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of movies that are being released soon.
  * @summary Upcoming
  */
-const movieUpcomingList = (
+export const movieUpcomingList = (
     params?: MovieUpcomingListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieUpcomingList200>>,) => {
       return tmdbClient<MovieUpcomingList200>(
       {url: `https://api.themoviedb.org/3/movie/upcoming`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the top level details of a movie by ID.
  * @summary Details
  */
-const movieDetails = (
+export const movieDetails = (
     movieId: number,
     params?: MovieDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieDetails200>>,) => {
       return tmdbClient<MovieDetails200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rating, watchlist and favourite status of an account.
  * @summary Account States
  */
-const movieAccountStates = (
+export const movieAccountStates = (
     movieId: number,
     params?: MovieAccountStatesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieAccountStates200>>,) => {
       return tmdbClient<MovieAccountStates200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/account_states`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the alternative titles for a movie.
  * @summary Alternative Titles
  */
-const movieAlternativeTitles = (
+export const movieAlternativeTitles = (
     movieId: number,
     params?: MovieAlternativeTitlesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieAlternativeTitles200>>,) => {
       return tmdbClient<MovieAlternativeTitles200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/alternative_titles`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the recent changes for a movie.
  * @summary Changes
  */
-const movieChanges = (
+export const movieChanges = (
     movieId: number,
     params?: MovieChangesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieChanges200>>,) => {
       return tmdbClient<MovieChanges200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Credits
  */
-const movieCredits = (
+export const movieCredits = (
     movieId: number,
     params?: MovieCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieCredits200>>,) => {
       return tmdbClient<MovieCredits200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary External IDs
  */
-const movieExternalIds = (
+export const movieExternalIds = (
     movieId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieExternalIds200>>,) => {
       return tmdbClient<MovieExternalIds200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/external_ids`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the images that belong to a movie.
  * @summary Images
  */
-const movieImages = (
+export const movieImages = (
     movieId: number,
     params?: MovieImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieImages200>>,) => {
       return tmdbClient<MovieImages200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Keywords
  */
-const movieKeywords = (
+export const movieKeywords = (
     movieId: string,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieKeywords200>>,) => {
       return tmdbClient<MovieKeywords200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/keywords`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the newest movie ID.
  * @summary Latest
  */
-const movieLatestId = (
+export const movieLatestId = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieLatestId200>>,) => {
       return tmdbClient<MovieLatestId200>(
       {url: `https://api.themoviedb.org/3/movie/latest`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the lists that a movie has been added to.
  * @summary Lists
  */
-const movieLists = (
+export const movieLists = (
     movieId: number,
     params?: MovieListsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieLists200>>,) => {
       return tmdbClient<MovieLists200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/lists`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Recommendations
  */
-const movieRecommendations = (
+export const movieRecommendations = (
     movieId: number,
     params?: MovieRecommendationsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieRecommendations200>>,) => {
       return tmdbClient<MovieRecommendations200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/recommendations`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the release dates and certifications for a movie.
  * @summary Release Dates
  */
-const movieReleaseDates = (
+export const movieReleaseDates = (
     movieId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieReleaseDates200>>,) => {
       return tmdbClient<MovieReleaseDates200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/release_dates`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the user reviews for a movie.
  * @summary Reviews
  */
-const movieReviews = (
+export const movieReviews = (
     movieId: number,
     params?: MovieReviewsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieReviews200>>,) => {
       return tmdbClient<MovieReviews200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/reviews`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the similar movies based on genres and keywords.
  * @summary Similar
  */
-const movieSimilar = (
+export const movieSimilar = (
     movieId: number,
     params?: MovieSimilarParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieSimilar200>>,) => {
       return tmdbClient<MovieSimilar200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/similar`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the translations for a movie.
  * @summary Translations
  */
-const movieTranslations = (
+export const movieTranslations = (
     movieId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieTranslations200>>,) => {
       return tmdbClient<MovieTranslations200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary Videos
  */
-const movieVideos = (
+export const movieVideos = (
     movieId: number,
     params?: MovieVideosParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieVideos200>>,) => {
       return tmdbClient<MovieVideos200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/videos`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of streaming providers we have for a movie.
  * @summary Watch Providers
  */
-const movieWatchProviders = (
+export const movieWatchProviders = (
     movieId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieWatchProviders200>>,) => {
       return tmdbClient<MovieWatchProviders200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Rate a movie and save it to your rated list.
  * @summary Add Rating
  */
-const movieAddRating = (
+export const movieAddRating = (
     movieId: number,
-    movieAddRatingBody?: MovieAddRatingBody,
+    movieAddRatingBody?: BodyType<MovieAddRatingBody>,
     params?: MovieAddRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieAddRating200>>,) => {
       return tmdbClient<MovieAddRating200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/rating`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: movieAddRatingBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Delete a user rating.
  * @summary Delete Rating
  */
-const movieDeleteRating = (
+export const movieDeleteRating = (
     movieId: number,
     params?: MovieDeleteRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<MovieDeleteRating200>>,) => {
       return tmdbClient<MovieDeleteRating200>(
       {url: `https://api.themoviedb.org/3/movie/${movieId}/rating`, method: 'DELETE',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Details
  */
-const networkDetails = (
+export const networkDetails = (
     networkId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<NetworkDetails200>>,) => {
       return tmdbClient<NetworkDetails200>(
       {url: `https://api.themoviedb.org/3/network/${networkId}`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the alternative names of a network.
  * @summary Alternative Names
  */
-const detailsCopy = (
+export const detailsCopy = (
     networkId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<DetailsCopy200>>,) => {
       return tmdbClient<DetailsCopy200>(
       {url: `https://api.themoviedb.org/3/network/${networkId}/alternative_names`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the TV network logos by id.
  * @summary Images
  */
-const alternativeNamesCopy = (
+export const alternativeNamesCopy = (
     networkId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<AlternativeNamesCopy200>>,) => {
       return tmdbClient<AlternativeNamesCopy200>(
       {url: `https://api.themoviedb.org/3/network/${networkId}/images`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get a list of people ordered by popularity.
  * @summary Popular
  */
-const personPopularList = (
+export const personPopularList = (
     params?: PersonPopularListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonPopularList200>>,) => {
       return tmdbClient<PersonPopularList200>(
       {url: `https://api.themoviedb.org/3/person/popular`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Query the top level details of a person.
  * @summary Details
  */
-const personDetails = (
+export const personDetails = (
     personId: number,
     params?: PersonDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonDetails200>>,) => {
       return tmdbClient<PersonDetails200>(
       {url: `https://api.themoviedb.org/3/person/${personId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the recent changes for a person.
  * @summary Changes
  */
-const personChanges = (
+export const personChanges = (
     personId: number,
     params?: PersonChangesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonChanges200>>,) => {
       return tmdbClient<PersonChanges200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the combined movie and TV credits that belong to a person.
  * @summary Combined Credits
  */
-const personCombinedCredits = (
+export const personCombinedCredits = (
     personId: string,
     params?: PersonCombinedCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonCombinedCredits200>>,) => {
       return tmdbClient<PersonCombinedCredits200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/combined_credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the external ID's that belong to a person.
  * @summary External IDs
  */
-const personExternalIds = (
+export const personExternalIds = (
     personId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonExternalIds200>>,) => {
       return tmdbClient<PersonExternalIds200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/external_ids`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the profile images that belong to a person.
  * @summary Images
  */
-const personImages = (
+export const personImages = (
     personId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonImages200>>,) => {
       return tmdbClient<PersonImages200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/images`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the newest created person. This is a live response and will continuously change.
  * @summary Latest
  */
-const personLatestId = (
+export const personLatestId = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonLatestId200>>,) => {
       return tmdbClient<PersonLatestId200>(
       {url: `https://api.themoviedb.org/3/person/latest`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the movie credits for a person.
  * @summary Movie Credits
  */
-const personMovieCredits = (
+export const personMovieCredits = (
     personId: number,
     params?: PersonMovieCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonMovieCredits200>>,) => {
       return tmdbClient<PersonMovieCredits200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/movie_credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the TV credits that belong to a person.
  * @summary TV Credits
  */
-const personTvCredits = (
+export const personTvCredits = (
     personId: number,
     params?: PersonTvCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonTvCredits200>>,) => {
       return tmdbClient<PersonTvCredits200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/tv_credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the tagged images for a person.
  * @summary Tagged Images
  */
-const personTaggedImages = (
+export const personTaggedImages = (
     personId: number,
     params?: PersonTaggedImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<PersonTaggedImages200>>,) => {
       return tmdbClient<PersonTaggedImages200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/tagged_images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the translations that belong to a person.
  * @summary Translations
  */
-const translations = (
+export const translations = (
     personId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<Translations200>>,) => {
       return tmdbClient<Translations200>(
       {url: `https://api.themoviedb.org/3/person/${personId}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Retrieve the details of a movie or TV show review.
  * @summary Details
  */
-const reviewDetails = (
+export const reviewDetails = (
     reviewId: string,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ReviewDetails200>>,) => {
       return tmdbClient<ReviewDetails200>(
       {url: `https://api.themoviedb.org/3/review/${reviewId}`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Search for collections by their original, translated and alternative names.
  * @summary Collection
  */
-const searchCollection = (
+export const searchCollection = (
     params: SearchCollectionParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchCollection200>>,) => {
       return tmdbClient<SearchCollection200>(
       {url: `https://api.themoviedb.org/3/search/collection`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Search for companies by their original and alternative names.
  * @summary Company
  */
-const searchCompany = (
+export const searchCompany = (
     params: SearchCompanyParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchCompany200>>,) => {
       return tmdbClient<SearchCompany200>(
       {url: `https://api.themoviedb.org/3/search/company`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Search for keywords by their name.
  * @summary Keyword
  */
-const searchKeyword = (
+export const searchKeyword = (
     params: SearchKeywordParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchKeyword200>>,) => {
       return tmdbClient<SearchKeyword200>(
       {url: `https://api.themoviedb.org/3/search/keyword`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Search for movies by their original, translated and alternative titles.
  * @summary Movie
  */
-const searchMovie = (
+export const searchMovie = (
     params: SearchMovieParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchMovie200>>,) => {
       return tmdbClient<SearchMovie200>(
       {url: `https://api.themoviedb.org/3/search/movie`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Use multi search when you want to search for movies, TV shows and people in a single request.
  * @summary Multi
  */
-const searchMulti = (
+export const searchMulti = (
     params: SearchMultiParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchMulti200>>,) => {
       return tmdbClient<SearchMulti200>(
       {url: `https://api.themoviedb.org/3/search/multi`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Search for people by their name and also known as names.
  * @summary Person
  */
-const searchPerson = (
+export const searchPerson = (
     params: SearchPersonParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchPerson200>>,) => {
       return tmdbClient<SearchPerson200>(
       {url: `https://api.themoviedb.org/3/search/person`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Search for TV shows by their original, translated and also known as names.
  * @summary TV
  */
-const searchTv = (
+export const searchTv = (
     params: SearchTvParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<SearchTv200>>,) => {
       return tmdbClient<SearchTv200>(
       {url: `https://api.themoviedb.org/3/search/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the trending movies, TV shows and people.
  * @summary All
  */
-const trendingAll = (
+export const trendingAll = (
     params?: TrendingAllParams,
     timeWindow: 'day' | 'week' = 'day',
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TrendingAll200>>,) => {
       return tmdbClient<TrendingAll200>(
       {url: `https://api.themoviedb.org/3/trending/all/${timeWindow}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the trending movies on TMDB.
  * @summary Movies
  */
-const trendingMovies = (
+export const trendingMovies = (
     params?: TrendingMoviesParams,
     timeWindow: 'day' | 'week' = 'day',
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TrendingMovies200>>,) => {
       return tmdbClient<TrendingMovies200>(
       {url: `https://api.themoviedb.org/3/trending/movie/${timeWindow}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the trending people on TMDB.
  * @summary People
  */
-const trendingPeople = (
+export const trendingPeople = (
     params?: TrendingPeopleParams,
     timeWindow: 'day' | 'week' = 'day',
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TrendingPeople200>>,) => {
       return tmdbClient<TrendingPeople200>(
       {url: `https://api.themoviedb.org/3/trending/person/${timeWindow}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the trending TV shows on TMDB.
  * @summary TV
  */
-const trendingTv = (
+export const trendingTv = (
     params?: TrendingTvParams,
     timeWindow: 'day' | 'week' = 'day',
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TrendingTv200>>,) => {
       return tmdbClient<TrendingTv200>(
       {url: `https://api.themoviedb.org/3/trending/tv/${timeWindow}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of TV shows airing today.
  * @summary Airing Today
  */
-const tvSeriesAiringTodayList = (
+export const tvSeriesAiringTodayList = (
     params?: TvSeriesAiringTodayListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesAiringTodayList200>>,) => {
       return tmdbClient<TvSeriesAiringTodayList200>(
       {url: `https://api.themoviedb.org/3/tv/airing_today`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of TV shows that air in the next 7 days.
  * @summary On The Air
  */
-const tvSeriesOnTheAirList = (
+export const tvSeriesOnTheAirList = (
     params?: TvSeriesOnTheAirListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesOnTheAirList200>>,) => {
       return tmdbClient<TvSeriesOnTheAirList200>(
       {url: `https://api.themoviedb.org/3/tv/on_the_air`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of TV shows ordered by popularity.
  * @summary Popular
  */
-const tvSeriesPopularList = (
+export const tvSeriesPopularList = (
     params?: TvSeriesPopularListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesPopularList200>>,) => {
       return tmdbClient<TvSeriesPopularList200>(
       {url: `https://api.themoviedb.org/3/tv/popular`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of TV shows ordered by rating.
  * @summary Top Rated
  */
-const tvSeriesTopRatedList = (
+export const tvSeriesTopRatedList = (
     params?: TvSeriesTopRatedListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesTopRatedList200>>,) => {
       return tmdbClient<TvSeriesTopRatedList200>(
       {url: `https://api.themoviedb.org/3/tv/top_rated`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the details of a TV show.
  * @summary Details
  */
-const tvSeriesDetails = (
+export const tvSeriesDetails = (
     seriesId: number,
     params?: TvSeriesDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesDetails200>>,) => {
       return tmdbClient<TvSeriesDetails200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rating, watchlist and favourite status.
  * @summary Account States
  */
-const tvSeriesAccountStates = (
+export const tvSeriesAccountStates = (
     seriesId: number,
     params?: TvSeriesAccountStatesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesAccountStates200>>,) => {
       return tmdbClient<TvSeriesAccountStates200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/account_states`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the aggregate credits (cast and crew) that have been added to a TV show.
  * @summary Aggregate Credits
  */
-const tvSeriesAggregateCredits = (
+export const tvSeriesAggregateCredits = (
     seriesId: number,
     params?: TvSeriesAggregateCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesAggregateCredits200>>,) => {
       return tmdbClient<TvSeriesAggregateCredits200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/aggregate_credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the alternative titles that have been added to a TV show.
  * @summary Alternative Titles
  */
-const tvSeriesAlternativeTitles = (
+export const tvSeriesAlternativeTitles = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesAlternativeTitles200>>,) => {
       return tmdbClient<TvSeriesAlternativeTitles200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/alternative_titles`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the recent changes for a TV show.
  * @summary Changes
  */
-const tvSeriesChanges = (
+export const tvSeriesChanges = (
     seriesId: number,
     params?: TvSeriesChangesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesChanges200>>,) => {
       return tmdbClient<TvSeriesChanges200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the content ratings that have been added to a TV show.
  * @summary Content Ratings
  */
-const tvSeriesContentRatings = (
+export const tvSeriesContentRatings = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesContentRatings200>>,) => {
       return tmdbClient<TvSeriesContentRatings200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/content_ratings`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the latest season credits of a TV show.
  * @summary Credits
  */
-const tvSeriesCredits = (
+export const tvSeriesCredits = (
     seriesId: number,
     params?: TvSeriesCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesCredits200>>,) => {
       return tmdbClient<TvSeriesCredits200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the episode groups that have been added to a TV show.
  * @summary Episode Groups
  */
-const tvSeriesEpisodeGroups = (
+export const tvSeriesEpisodeGroups = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesEpisodeGroups200>>,) => {
       return tmdbClient<TvSeriesEpisodeGroups200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/episode_groups`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get a list of external IDs that have been added to a TV show.
  * @summary External IDs
  */
-const tvSeriesExternalIds = (
+export const tvSeriesExternalIds = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesExternalIds200>>,) => {
       return tmdbClient<TvSeriesExternalIds200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/external_ids`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the images that belong to a TV series.
  * @summary Images
  */
-const tvSeriesImages = (
+export const tvSeriesImages = (
     seriesId: number,
     params?: TvSeriesImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesImages200>>,) => {
       return tmdbClient<TvSeriesImages200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of keywords that have been added to a TV show.
  * @summary Keywords
  */
-const tvSeriesKeywords = (
+export const tvSeriesKeywords = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesKeywords200>>,) => {
       return tmdbClient<TvSeriesKeywords200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/keywords`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the newest TV show ID.
  * @summary Latest
  */
-const tvSeriesLatestId = (
+export const tvSeriesLatestId = (
 
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesLatestId200>>,) => {
       return tmdbClient<TvSeriesLatestId200>(
       {url: `https://api.themoviedb.org/3/tv/latest`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the lists that a TV series has been added to.
  * @summary Lists
  */
-const listsCopy = (
+export const listsCopy = (
     seriesId: number,
     params?: ListsCopyParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<ListsCopy200>>,) => {
       return tmdbClient<ListsCopy200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/lists`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Recommendations
  */
-const tvSeriesRecommendations = (
+export const tvSeriesRecommendations = (
     seriesId: number,
     params?: TvSeriesRecommendationsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesRecommendations200>>,) => {
       return tmdbClient<TvSeriesRecommendations200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/recommendations`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the reviews that have been added to a TV show.
  * @summary Reviews
  */
-const tvSeriesReviews = (
+export const tvSeriesReviews = (
     seriesId: number,
     params?: TvSeriesReviewsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesReviews200>>,) => {
       return tmdbClient<TvSeriesReviews200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/reviews`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the seasons and episodes that have screened theatrically.
  * @summary Screened Theatrically
  */
-const tvSeriesScreenedTheatrically = (
+export const tvSeriesScreenedTheatrically = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesScreenedTheatrically200>>,) => {
       return tmdbClient<TvSeriesScreenedTheatrically200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/screened_theatrically`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the similar TV shows.
  * @summary Similar
  */
-const tvSeriesSimilar = (
+export const tvSeriesSimilar = (
     seriesId: string,
     params?: TvSeriesSimilarParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesSimilar200>>,) => {
       return tmdbClient<TvSeriesSimilar200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/similar`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the translations that have been added to a TV show.
  * @summary Translations
  */
-const tvSeriesTranslations = (
+export const tvSeriesTranslations = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesTranslations200>>,) => {
       return tmdbClient<TvSeriesTranslations200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the videos that belong to a TV show.
  * @summary Videos
  */
-const tvSeriesVideos = (
+export const tvSeriesVideos = (
     seriesId: number,
     params?: TvSeriesVideosParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesVideos200>>,) => {
       return tmdbClient<TvSeriesVideos200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/videos`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of streaming providers we have for a TV show.
  * @summary Watch Providers
  */
-const tvSeriesWatchProviders = (
+export const tvSeriesWatchProviders = (
     seriesId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesWatchProviders200>>,) => {
       return tmdbClient<TvSeriesWatchProviders200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/watch/providers`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Rate a TV show and save it to your rated list.
  * @summary Add Rating
  */
-const tvSeriesAddRating = (
+export const tvSeriesAddRating = (
     seriesId: number,
-    tvSeriesAddRatingBody?: TvSeriesAddRatingBody,
+    tvSeriesAddRatingBody?: BodyType<TvSeriesAddRatingBody>,
     params?: TvSeriesAddRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesAddRating200>>,) => {
       return tmdbClient<TvSeriesAddRating200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/rating`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: tvSeriesAddRatingBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Delete Rating
  */
-const tvSeriesDeleteRating = (
+export const tvSeriesDeleteRating = (
     seriesId: number,
     params?: TvSeriesDeleteRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeriesDeleteRating200>>,) => {
       return tmdbClient<TvSeriesDeleteRating200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/rating`, method: 'DELETE',
         params
     },
-      );
+      options);
     }
 
 /**
  * Query the details of a TV season.
  * @summary Details
  */
-const tvSeasonDetails = (
+export const tvSeasonDetails = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonDetails200>>,) => {
       return tmdbClient<TvSeasonDetails200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rating, watchlist and favourite status.
  * @summary Account States
  */
-const tvSeasonAccountStates = (
+export const tvSeasonAccountStates = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonAccountStatesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonAccountStates200>>,) => {
       return tmdbClient<TvSeasonAccountStates200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/account_states`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the aggregate credits (cast and crew) that have been added to a TV season.
  * @summary Aggregate Credits
  */
-const tvSeasonAggregateCredits = (
+export const tvSeasonAggregateCredits = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonAggregateCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonAggregateCredits200>>,) => {
       return tmdbClient<TvSeasonAggregateCredits200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/aggregate_credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the recent changes for a TV season.
  * @summary Changes
  */
-const tvSeasonChangesById = (
+export const tvSeasonChangesById = (
     seasonId: number,
     params?: TvSeasonChangesByIdParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonChangesById200>>,) => {
       return tmdbClient<TvSeasonChangesById200>(
       {url: `https://api.themoviedb.org/3/tv/season/${seasonId}/changes`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * @summary Credits
  */
-const tvSeasonCredits = (
+export const tvSeasonCredits = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonCredits200>>,) => {
       return tmdbClient<TvSeasonCredits200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of external IDs that have been added to a TV season.
  * @summary External IDs
  */
-const tvSeasonExternalIds = (
+export const tvSeasonExternalIds = (
     seriesId: number,
     seasonNumber: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonExternalIds200>>,) => {
       return tmdbClient<TvSeasonExternalIds200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/external_ids`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the images that belong to a TV season.
  * @summary Images
  */
-const tvSeasonImages = (
+export const tvSeasonImages = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonImages200>>,) => {
       return tmdbClient<TvSeasonImages200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the translations for a TV season.
  * @summary Translations
  */
-const tvSeasonTranslations = (
+export const tvSeasonTranslations = (
     seriesId: number,
     seasonNumber: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonTranslations200>>,) => {
       return tmdbClient<TvSeasonTranslations200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the videos that belong to a TV season.
  * @summary Videos
  */
-const tvSeasonVideos = (
+export const tvSeasonVideos = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonVideosParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonVideos200>>,) => {
       return tmdbClient<TvSeasonVideos200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/videos`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of streaming providers we have for a TV season.
  * @summary Watch Providers
  */
-const tvSeasonWatchProviders = (
+export const tvSeasonWatchProviders = (
     seriesId: number,
     seasonNumber: number,
     params?: TvSeasonWatchProvidersParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvSeasonWatchProviders200>>,) => {
       return tmdbClient<TvSeasonWatchProviders200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/watch/providers`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Query the details of a TV episode.
  * @summary Details
  */
-const tvEpisodeDetails = (
+export const tvEpisodeDetails = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeDetailsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeDetails200>>,) => {
       return tmdbClient<TvEpisodeDetails200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the rating, watchlist and favourite status.
  * @summary Account States
  */
-const tvEpisodeAccountStates = (
+export const tvEpisodeAccountStates = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeAccountStatesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeAccountStates200>>,) => {
       return tmdbClient<TvEpisodeAccountStates200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/account_states`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the recent changes for a TV episode.
  * @summary Changes
  */
-const tvEpisodeChangesById = (
+export const tvEpisodeChangesById = (
     episodeId: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeChangesById200>>,) => {
       return tmdbClient<TvEpisodeChangesById200>(
       {url: `https://api.themoviedb.org/3/tv/episode/${episodeId}/changes`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * @summary Credits
  */
-const tvEpisodeCredits = (
+export const tvEpisodeCredits = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeCreditsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeCredits200>>,) => {
       return tmdbClient<TvEpisodeCredits200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/credits`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get a list of external IDs that have been added to a TV episode.
  * @summary External IDs
  */
-const tvEpisodeExternalIds = (
+export const tvEpisodeExternalIds = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: string,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeExternalIds200>>,) => {
       return tmdbClient<TvEpisodeExternalIds200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/external_ids`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the images that belong to a TV episode.
  * @summary Images
  */
-const tvEpisodeImages = (
+export const tvEpisodeImages = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeImagesParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeImages200>>,) => {
       return tmdbClient<TvEpisodeImages200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/images`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the translations that have been added to a TV episode.
  * @summary Translations
  */
-const tvEpisodeTranslations = (
+export const tvEpisodeTranslations = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeTranslations200>>,) => {
       return tmdbClient<TvEpisodeTranslations200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/translations`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the videos that belong to a TV episode.
  * @summary Videos
  */
-const tvEpisodeVideos = (
+export const tvEpisodeVideos = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeVideosParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeVideos200>>,) => {
       return tmdbClient<TvEpisodeVideos200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/videos`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Rate a TV episode and save it to your rated list.
  * @summary Add Rating
  */
-const tvEpisodeAddRating = (
+export const tvEpisodeAddRating = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
-    tvEpisodeAddRatingBody?: TvEpisodeAddRatingBody,
+    tvEpisodeAddRatingBody?: BodyType<TvEpisodeAddRatingBody>,
     params?: TvEpisodeAddRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeAddRating200>>,) => {
       return tmdbClient<TvEpisodeAddRating200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/rating`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: tvEpisodeAddRatingBody,
         params
     },
-      );
+      options);
     }
 
 /**
  * Delete your rating on a TV episode.
  * @summary Delete Rating
  */
-const tvEpisodeDeleteRating = (
+export const tvEpisodeDeleteRating = (
     seriesId: number,
     seasonNumber: number,
     episodeNumber: number,
     params?: TvEpisodeDeleteRatingParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeDeleteRating200>>,) => {
       return tmdbClient<TvEpisodeDeleteRating200>(
       {url: `https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/rating`, method: 'DELETE',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the details of a TV episode group.
  * @summary Details
  */
-const tvEpisodeGroupDetails = (
+export const tvEpisodeGroupDetails = (
     tvEpisodeGroupId: string,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<TvEpisodeGroupDetails200>>,) => {
       return tmdbClient<TvEpisodeGroupDetails200>(
       {url: `https://api.themoviedb.org/3/tv/episode_group/${tvEpisodeGroupId}`, method: 'GET'
     },
-      );
+      options);
     }
 
 /**
  * Get the list of the countries we have watch provider (OTT/streaming) data for.
  * @summary Available Regions
  */
-const watchProvidersAvailableRegions = (
+export const watchProvidersAvailableRegions = (
     params?: WatchProvidersAvailableRegionsParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<WatchProvidersAvailableRegions200>>,) => {
       return tmdbClient<WatchProvidersAvailableRegions200>(
       {url: `https://api.themoviedb.org/3/watch/providers/regions`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of streaming providers we have for movies.
  * @summary Movie Providers
  */
-const watchProvidersMovieList = (
+export const watchProvidersMovieList = (
     params?: WatchProvidersMovieListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<WatchProvidersMovieList200>>,) => {
       return tmdbClient<WatchProvidersMovieList200>(
       {url: `https://api.themoviedb.org/3/watch/providers/movie`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
 /**
  * Get the list of streaming providers we have for TV shows.
  * @summary TV Providers
  */
-const watchProviderTvList = (
+export const watchProviderTvList = (
     params?: WatchProviderTvListParams,
- ) => {
+ options?: SecondParameter<typeof tmdbClient<WatchProviderTvList200>>,) => {
       return tmdbClient<WatchProviderTvList200>(
       {url: `https://api.themoviedb.org/3/watch/providers/tv`, method: 'GET',
         params
     },
-      );
+      options);
     }
 
-return {authenticationValidateKey,accountDetails,accountAddFavorite,accountAddToWatchlist,accountGetFavorites,accountFavoriteTv,accountLists,accountRatedMovies,accountRatedTv,accountRatedTvEpisodes,accountWatchlistMovies,accountWatchlistTv,authenticationCreateGuestSession,authenticationCreateRequestToken,authenticationCreateSession,authenticationCreateSessionFromV4Token,authenticationCreateSessionFromLogin,authenticationDeleteSession,certificationMovieList,certificationsTvList,changesMovieList,changesPeopleList,changesTvList,collectionDetails,collectionImages,collectionTranslations,companyDetails,companyAlternativeNames,companyImages,configurationDetails,configurationCountries,configurationJobs,configurationLanguages,configurationPrimaryTranslations,configurationTimezones,creditDetails,discoverMovie,discoverTv,findById,genreMovieList,genreTvList,guestSessionRatedMovies,guestSessionRatedTv,guestSessionRatedTvEpisodes,keywordDetails,keywordMovies,listAddMovie,listCheckItemStatus,listClear,listCreate,listDelete,listDetails,listRemoveMovie,movieNowPlayingList,moviePopularList,movieTopRatedList,movieUpcomingList,movieDetails,movieAccountStates,movieAlternativeTitles,movieChanges,movieCredits,movieExternalIds,movieImages,movieKeywords,movieLatestId,movieLists,movieRecommendations,movieReleaseDates,movieReviews,movieSimilar,movieTranslations,movieVideos,movieWatchProviders,movieAddRating,movieDeleteRating,networkDetails,detailsCopy,alternativeNamesCopy,personPopularList,personDetails,personChanges,personCombinedCredits,personExternalIds,personImages,personLatestId,personMovieCredits,personTvCredits,personTaggedImages,translations,reviewDetails,searchCollection,searchCompany,searchKeyword,searchMovie,searchMulti,searchPerson,searchTv,trendingAll,trendingMovies,trendingPeople,trendingTv,tvSeriesAiringTodayList,tvSeriesOnTheAirList,tvSeriesPopularList,tvSeriesTopRatedList,tvSeriesDetails,tvSeriesAccountStates,tvSeriesAggregateCredits,tvSeriesAlternativeTitles,tvSeriesChanges,tvSeriesContentRatings,tvSeriesCredits,tvSeriesEpisodeGroups,tvSeriesExternalIds,tvSeriesImages,tvSeriesKeywords,tvSeriesLatestId,listsCopy,tvSeriesRecommendations,tvSeriesReviews,tvSeriesScreenedTheatrically,tvSeriesSimilar,tvSeriesTranslations,tvSeriesVideos,tvSeriesWatchProviders,tvSeriesAddRating,tvSeriesDeleteRating,tvSeasonDetails,tvSeasonAccountStates,tvSeasonAggregateCredits,tvSeasonChangesById,tvSeasonCredits,tvSeasonExternalIds,tvSeasonImages,tvSeasonTranslations,tvSeasonVideos,tvSeasonWatchProviders,tvEpisodeDetails,tvEpisodeAccountStates,tvEpisodeChangesById,tvEpisodeCredits,tvEpisodeExternalIds,tvEpisodeImages,tvEpisodeTranslations,tvEpisodeVideos,tvEpisodeAddRating,tvEpisodeDeleteRating,tvEpisodeGroupDetails,watchProvidersAvailableRegions,watchProvidersMovieList,watchProviderTvList}};
-export type AuthenticationValidateKeyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationValidateKey']>>>
-export type AccountDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountDetails']>>>
-export type AccountAddFavoriteResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountAddFavorite']>>>
-export type AccountAddToWatchlistResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountAddToWatchlist']>>>
-export type AccountGetFavoritesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountGetFavorites']>>>
-export type AccountFavoriteTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountFavoriteTv']>>>
-export type AccountListsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountLists']>>>
-export type AccountRatedMoviesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountRatedMovies']>>>
-export type AccountRatedTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountRatedTv']>>>
-export type AccountRatedTvEpisodesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountRatedTvEpisodes']>>>
-export type AccountWatchlistMoviesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountWatchlistMovies']>>>
-export type AccountWatchlistTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['accountWatchlistTv']>>>
-export type AuthenticationCreateGuestSessionResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationCreateGuestSession']>>>
-export type AuthenticationCreateRequestTokenResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationCreateRequestToken']>>>
-export type AuthenticationCreateSessionResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationCreateSession']>>>
-export type AuthenticationCreateSessionFromV4TokenResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationCreateSessionFromV4Token']>>>
-export type AuthenticationCreateSessionFromLoginResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationCreateSessionFromLogin']>>>
-export type AuthenticationDeleteSessionResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['authenticationDeleteSession']>>>
-export type CertificationMovieListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['certificationMovieList']>>>
-export type CertificationsTvListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['certificationsTvList']>>>
-export type ChangesMovieListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['changesMovieList']>>>
-export type ChangesPeopleListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['changesPeopleList']>>>
-export type ChangesTvListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['changesTvList']>>>
-export type CollectionDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['collectionDetails']>>>
-export type CollectionImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['collectionImages']>>>
-export type CollectionTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['collectionTranslations']>>>
-export type CompanyDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['companyDetails']>>>
-export type CompanyAlternativeNamesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['companyAlternativeNames']>>>
-export type CompanyImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['companyImages']>>>
-export type ConfigurationDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationDetails']>>>
-export type ConfigurationCountriesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationCountries']>>>
-export type ConfigurationJobsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationJobs']>>>
-export type ConfigurationLanguagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationLanguages']>>>
-export type ConfigurationPrimaryTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationPrimaryTranslations']>>>
-export type ConfigurationTimezonesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['configurationTimezones']>>>
-export type CreditDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['creditDetails']>>>
-export type DiscoverMovieResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['discoverMovie']>>>
-export type DiscoverTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['discoverTv']>>>
-export type FindByIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['findById']>>>
-export type GenreMovieListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['genreMovieList']>>>
-export type GenreTvListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['genreTvList']>>>
-export type GuestSessionRatedMoviesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['guestSessionRatedMovies']>>>
-export type GuestSessionRatedTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['guestSessionRatedTv']>>>
-export type GuestSessionRatedTvEpisodesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['guestSessionRatedTvEpisodes']>>>
-export type KeywordDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['keywordDetails']>>>
-export type KeywordMoviesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['keywordMovies']>>>
-export type ListAddMovieResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listAddMovie']>>>
-export type ListCheckItemStatusResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listCheckItemStatus']>>>
-export type ListClearResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listClear']>>>
-export type ListCreateResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listCreate']>>>
-export type ListDeleteResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listDelete']>>>
-export type ListDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listDetails']>>>
-export type ListRemoveMovieResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listRemoveMovie']>>>
-export type MovieNowPlayingListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieNowPlayingList']>>>
-export type MoviePopularListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['moviePopularList']>>>
-export type MovieTopRatedListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieTopRatedList']>>>
-export type MovieUpcomingListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieUpcomingList']>>>
-export type MovieDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieDetails']>>>
-export type MovieAccountStatesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieAccountStates']>>>
-export type MovieAlternativeTitlesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieAlternativeTitles']>>>
-export type MovieChangesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieChanges']>>>
-export type MovieCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieCredits']>>>
-export type MovieExternalIdsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieExternalIds']>>>
-export type MovieImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieImages']>>>
-export type MovieKeywordsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieKeywords']>>>
-export type MovieLatestIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieLatestId']>>>
-export type MovieListsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieLists']>>>
-export type MovieRecommendationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieRecommendations']>>>
-export type MovieReleaseDatesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieReleaseDates']>>>
-export type MovieReviewsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieReviews']>>>
-export type MovieSimilarResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieSimilar']>>>
-export type MovieTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieTranslations']>>>
-export type MovieVideosResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieVideos']>>>
-export type MovieWatchProvidersResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieWatchProviders']>>>
-export type MovieAddRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieAddRating']>>>
-export type MovieDeleteRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['movieDeleteRating']>>>
-export type NetworkDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['networkDetails']>>>
-export type DetailsCopyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['detailsCopy']>>>
-export type AlternativeNamesCopyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['alternativeNamesCopy']>>>
-export type PersonPopularListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personPopularList']>>>
-export type PersonDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personDetails']>>>
-export type PersonChangesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personChanges']>>>
-export type PersonCombinedCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personCombinedCredits']>>>
-export type PersonExternalIdsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personExternalIds']>>>
-export type PersonImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personImages']>>>
-export type PersonLatestIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personLatestId']>>>
-export type PersonMovieCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personMovieCredits']>>>
-export type PersonTvCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personTvCredits']>>>
-export type PersonTaggedImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['personTaggedImages']>>>
-export type TranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['translations']>>>
-export type ReviewDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['reviewDetails']>>>
-export type SearchCollectionResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchCollection']>>>
-export type SearchCompanyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchCompany']>>>
-export type SearchKeywordResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchKeyword']>>>
-export type SearchMovieResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchMovie']>>>
-export type SearchMultiResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchMulti']>>>
-export type SearchPersonResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchPerson']>>>
-export type SearchTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['searchTv']>>>
-export type TrendingAllResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['trendingAll']>>>
-export type TrendingMoviesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['trendingMovies']>>>
-export type TrendingPeopleResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['trendingPeople']>>>
-export type TrendingTvResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['trendingTv']>>>
-export type TvSeriesAiringTodayListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesAiringTodayList']>>>
-export type TvSeriesOnTheAirListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesOnTheAirList']>>>
-export type TvSeriesPopularListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesPopularList']>>>
-export type TvSeriesTopRatedListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesTopRatedList']>>>
-export type TvSeriesDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesDetails']>>>
-export type TvSeriesAccountStatesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesAccountStates']>>>
-export type TvSeriesAggregateCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesAggregateCredits']>>>
-export type TvSeriesAlternativeTitlesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesAlternativeTitles']>>>
-export type TvSeriesChangesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesChanges']>>>
-export type TvSeriesContentRatingsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesContentRatings']>>>
-export type TvSeriesCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesCredits']>>>
-export type TvSeriesEpisodeGroupsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesEpisodeGroups']>>>
-export type TvSeriesExternalIdsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesExternalIds']>>>
-export type TvSeriesImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesImages']>>>
-export type TvSeriesKeywordsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesKeywords']>>>
-export type TvSeriesLatestIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesLatestId']>>>
-export type ListsCopyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['listsCopy']>>>
-export type TvSeriesRecommendationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesRecommendations']>>>
-export type TvSeriesReviewsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesReviews']>>>
-export type TvSeriesScreenedTheatricallyResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesScreenedTheatrically']>>>
-export type TvSeriesSimilarResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesSimilar']>>>
-export type TvSeriesTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesTranslations']>>>
-export type TvSeriesVideosResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesVideos']>>>
-export type TvSeriesWatchProvidersResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesWatchProviders']>>>
-export type TvSeriesAddRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesAddRating']>>>
-export type TvSeriesDeleteRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeriesDeleteRating']>>>
-export type TvSeasonDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonDetails']>>>
-export type TvSeasonAccountStatesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonAccountStates']>>>
-export type TvSeasonAggregateCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonAggregateCredits']>>>
-export type TvSeasonChangesByIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonChangesById']>>>
-export type TvSeasonCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonCredits']>>>
-export type TvSeasonExternalIdsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonExternalIds']>>>
-export type TvSeasonImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonImages']>>>
-export type TvSeasonTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonTranslations']>>>
-export type TvSeasonVideosResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonVideos']>>>
-export type TvSeasonWatchProvidersResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvSeasonWatchProviders']>>>
-export type TvEpisodeDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeDetails']>>>
-export type TvEpisodeAccountStatesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeAccountStates']>>>
-export type TvEpisodeChangesByIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeChangesById']>>>
-export type TvEpisodeCreditsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeCredits']>>>
-export type TvEpisodeExternalIdsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeExternalIds']>>>
-export type TvEpisodeImagesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeImages']>>>
-export type TvEpisodeTranslationsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeTranslations']>>>
-export type TvEpisodeVideosResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeVideos']>>>
-export type TvEpisodeAddRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeAddRating']>>>
-export type TvEpisodeDeleteRatingResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeDeleteRating']>>>
-export type TvEpisodeGroupDetailsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['tvEpisodeGroupDetails']>>>
-export type WatchProvidersAvailableRegionsResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['watchProvidersAvailableRegions']>>>
-export type WatchProvidersMovieListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['watchProvidersMovieList']>>>
-export type WatchProviderTvListResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getTmdbApi>['watchProviderTvList']>>>
+export type AuthenticationValidateKeyResult = NonNullable<Awaited<ReturnType<typeof authenticationValidateKey>>>
+export type AccountDetailsResult = NonNullable<Awaited<ReturnType<typeof accountDetails>>>
+export type AccountAddFavoriteResult = NonNullable<Awaited<ReturnType<typeof accountAddFavorite>>>
+export type AccountAddToWatchlistResult = NonNullable<Awaited<ReturnType<typeof accountAddToWatchlist>>>
+export type AccountGetFavoritesResult = NonNullable<Awaited<ReturnType<typeof accountGetFavorites>>>
+export type AccountFavoriteTvResult = NonNullable<Awaited<ReturnType<typeof accountFavoriteTv>>>
+export type AccountListsResult = NonNullable<Awaited<ReturnType<typeof accountLists>>>
+export type AccountRatedMoviesResult = NonNullable<Awaited<ReturnType<typeof accountRatedMovies>>>
+export type AccountRatedTvResult = NonNullable<Awaited<ReturnType<typeof accountRatedTv>>>
+export type AccountRatedTvEpisodesResult = NonNullable<Awaited<ReturnType<typeof accountRatedTvEpisodes>>>
+export type AccountWatchlistMoviesResult = NonNullable<Awaited<ReturnType<typeof accountWatchlistMovies>>>
+export type AccountWatchlistTvResult = NonNullable<Awaited<ReturnType<typeof accountWatchlistTv>>>
+export type AuthenticationCreateGuestSessionResult = NonNullable<Awaited<ReturnType<typeof authenticationCreateGuestSession>>>
+export type AuthenticationCreateRequestTokenResult = NonNullable<Awaited<ReturnType<typeof authenticationCreateRequestToken>>>
+export type AuthenticationCreateSessionResult = NonNullable<Awaited<ReturnType<typeof authenticationCreateSession>>>
+export type AuthenticationCreateSessionFromV4TokenResult = NonNullable<Awaited<ReturnType<typeof authenticationCreateSessionFromV4Token>>>
+export type AuthenticationCreateSessionFromLoginResult = NonNullable<Awaited<ReturnType<typeof authenticationCreateSessionFromLogin>>>
+export type AuthenticationDeleteSessionResult = NonNullable<Awaited<ReturnType<typeof authenticationDeleteSession>>>
+export type CertificationMovieListResult = NonNullable<Awaited<ReturnType<typeof certificationMovieList>>>
+export type CertificationsTvListResult = NonNullable<Awaited<ReturnType<typeof certificationsTvList>>>
+export type ChangesMovieListResult = NonNullable<Awaited<ReturnType<typeof changesMovieList>>>
+export type ChangesPeopleListResult = NonNullable<Awaited<ReturnType<typeof changesPeopleList>>>
+export type ChangesTvListResult = NonNullable<Awaited<ReturnType<typeof changesTvList>>>
+export type CollectionDetailsResult = NonNullable<Awaited<ReturnType<typeof collectionDetails>>>
+export type CollectionImagesResult = NonNullable<Awaited<ReturnType<typeof collectionImages>>>
+export type CollectionTranslationsResult = NonNullable<Awaited<ReturnType<typeof collectionTranslations>>>
+export type CompanyDetailsResult = NonNullable<Awaited<ReturnType<typeof companyDetails>>>
+export type CompanyAlternativeNamesResult = NonNullable<Awaited<ReturnType<typeof companyAlternativeNames>>>
+export type CompanyImagesResult = NonNullable<Awaited<ReturnType<typeof companyImages>>>
+export type ConfigurationDetailsResult = NonNullable<Awaited<ReturnType<typeof configurationDetails>>>
+export type ConfigurationCountriesResult = NonNullable<Awaited<ReturnType<typeof configurationCountries>>>
+export type ConfigurationJobsResult = NonNullable<Awaited<ReturnType<typeof configurationJobs>>>
+export type ConfigurationLanguagesResult = NonNullable<Awaited<ReturnType<typeof configurationLanguages>>>
+export type ConfigurationPrimaryTranslationsResult = NonNullable<Awaited<ReturnType<typeof configurationPrimaryTranslations>>>
+export type ConfigurationTimezonesResult = NonNullable<Awaited<ReturnType<typeof configurationTimezones>>>
+export type CreditDetailsResult = NonNullable<Awaited<ReturnType<typeof creditDetails>>>
+export type DiscoverMovieResult = NonNullable<Awaited<ReturnType<typeof discoverMovie>>>
+export type DiscoverTvResult = NonNullable<Awaited<ReturnType<typeof discoverTv>>>
+export type FindByIdResult = NonNullable<Awaited<ReturnType<typeof findById>>>
+export type GenreMovieListResult = NonNullable<Awaited<ReturnType<typeof genreMovieList>>>
+export type GenreTvListResult = NonNullable<Awaited<ReturnType<typeof genreTvList>>>
+export type GuestSessionRatedMoviesResult = NonNullable<Awaited<ReturnType<typeof guestSessionRatedMovies>>>
+export type GuestSessionRatedTvResult = NonNullable<Awaited<ReturnType<typeof guestSessionRatedTv>>>
+export type GuestSessionRatedTvEpisodesResult = NonNullable<Awaited<ReturnType<typeof guestSessionRatedTvEpisodes>>>
+export type KeywordDetailsResult = NonNullable<Awaited<ReturnType<typeof keywordDetails>>>
+export type KeywordMoviesResult = NonNullable<Awaited<ReturnType<typeof keywordMovies>>>
+export type ListAddMovieResult = NonNullable<Awaited<ReturnType<typeof listAddMovie>>>
+export type ListCheckItemStatusResult = NonNullable<Awaited<ReturnType<typeof listCheckItemStatus>>>
+export type ListClearResult = NonNullable<Awaited<ReturnType<typeof listClear>>>
+export type ListCreateResult = NonNullable<Awaited<ReturnType<typeof listCreate>>>
+export type ListDeleteResult = NonNullable<Awaited<ReturnType<typeof listDelete>>>
+export type ListDetailsResult = NonNullable<Awaited<ReturnType<typeof listDetails>>>
+export type ListRemoveMovieResult = NonNullable<Awaited<ReturnType<typeof listRemoveMovie>>>
+export type MovieNowPlayingListResult = NonNullable<Awaited<ReturnType<typeof movieNowPlayingList>>>
+export type MoviePopularListResult = NonNullable<Awaited<ReturnType<typeof moviePopularList>>>
+export type MovieTopRatedListResult = NonNullable<Awaited<ReturnType<typeof movieTopRatedList>>>
+export type MovieUpcomingListResult = NonNullable<Awaited<ReturnType<typeof movieUpcomingList>>>
+export type MovieDetailsResult = NonNullable<Awaited<ReturnType<typeof movieDetails>>>
+export type MovieAccountStatesResult = NonNullable<Awaited<ReturnType<typeof movieAccountStates>>>
+export type MovieAlternativeTitlesResult = NonNullable<Awaited<ReturnType<typeof movieAlternativeTitles>>>
+export type MovieChangesResult = NonNullable<Awaited<ReturnType<typeof movieChanges>>>
+export type MovieCreditsResult = NonNullable<Awaited<ReturnType<typeof movieCredits>>>
+export type MovieExternalIdsResult = NonNullable<Awaited<ReturnType<typeof movieExternalIds>>>
+export type MovieImagesResult = NonNullable<Awaited<ReturnType<typeof movieImages>>>
+export type MovieKeywordsResult = NonNullable<Awaited<ReturnType<typeof movieKeywords>>>
+export type MovieLatestIdResult = NonNullable<Awaited<ReturnType<typeof movieLatestId>>>
+export type MovieListsResult = NonNullable<Awaited<ReturnType<typeof movieLists>>>
+export type MovieRecommendationsResult = NonNullable<Awaited<ReturnType<typeof movieRecommendations>>>
+export type MovieReleaseDatesResult = NonNullable<Awaited<ReturnType<typeof movieReleaseDates>>>
+export type MovieReviewsResult = NonNullable<Awaited<ReturnType<typeof movieReviews>>>
+export type MovieSimilarResult = NonNullable<Awaited<ReturnType<typeof movieSimilar>>>
+export type MovieTranslationsResult = NonNullable<Awaited<ReturnType<typeof movieTranslations>>>
+export type MovieVideosResult = NonNullable<Awaited<ReturnType<typeof movieVideos>>>
+export type MovieWatchProvidersResult = NonNullable<Awaited<ReturnType<typeof movieWatchProviders>>>
+export type MovieAddRatingResult = NonNullable<Awaited<ReturnType<typeof movieAddRating>>>
+export type MovieDeleteRatingResult = NonNullable<Awaited<ReturnType<typeof movieDeleteRating>>>
+export type NetworkDetailsResult = NonNullable<Awaited<ReturnType<typeof networkDetails>>>
+export type DetailsCopyResult = NonNullable<Awaited<ReturnType<typeof detailsCopy>>>
+export type AlternativeNamesCopyResult = NonNullable<Awaited<ReturnType<typeof alternativeNamesCopy>>>
+export type PersonPopularListResult = NonNullable<Awaited<ReturnType<typeof personPopularList>>>
+export type PersonDetailsResult = NonNullable<Awaited<ReturnType<typeof personDetails>>>
+export type PersonChangesResult = NonNullable<Awaited<ReturnType<typeof personChanges>>>
+export type PersonCombinedCreditsResult = NonNullable<Awaited<ReturnType<typeof personCombinedCredits>>>
+export type PersonExternalIdsResult = NonNullable<Awaited<ReturnType<typeof personExternalIds>>>
+export type PersonImagesResult = NonNullable<Awaited<ReturnType<typeof personImages>>>
+export type PersonLatestIdResult = NonNullable<Awaited<ReturnType<typeof personLatestId>>>
+export type PersonMovieCreditsResult = NonNullable<Awaited<ReturnType<typeof personMovieCredits>>>
+export type PersonTvCreditsResult = NonNullable<Awaited<ReturnType<typeof personTvCredits>>>
+export type PersonTaggedImagesResult = NonNullable<Awaited<ReturnType<typeof personTaggedImages>>>
+export type TranslationsResult = NonNullable<Awaited<ReturnType<typeof translations>>>
+export type ReviewDetailsResult = NonNullable<Awaited<ReturnType<typeof reviewDetails>>>
+export type SearchCollectionResult = NonNullable<Awaited<ReturnType<typeof searchCollection>>>
+export type SearchCompanyResult = NonNullable<Awaited<ReturnType<typeof searchCompany>>>
+export type SearchKeywordResult = NonNullable<Awaited<ReturnType<typeof searchKeyword>>>
+export type SearchMovieResult = NonNullable<Awaited<ReturnType<typeof searchMovie>>>
+export type SearchMultiResult = NonNullable<Awaited<ReturnType<typeof searchMulti>>>
+export type SearchPersonResult = NonNullable<Awaited<ReturnType<typeof searchPerson>>>
+export type SearchTvResult = NonNullable<Awaited<ReturnType<typeof searchTv>>>
+export type TrendingAllResult = NonNullable<Awaited<ReturnType<typeof trendingAll>>>
+export type TrendingMoviesResult = NonNullable<Awaited<ReturnType<typeof trendingMovies>>>
+export type TrendingPeopleResult = NonNullable<Awaited<ReturnType<typeof trendingPeople>>>
+export type TrendingTvResult = NonNullable<Awaited<ReturnType<typeof trendingTv>>>
+export type TvSeriesAiringTodayListResult = NonNullable<Awaited<ReturnType<typeof tvSeriesAiringTodayList>>>
+export type TvSeriesOnTheAirListResult = NonNullable<Awaited<ReturnType<typeof tvSeriesOnTheAirList>>>
+export type TvSeriesPopularListResult = NonNullable<Awaited<ReturnType<typeof tvSeriesPopularList>>>
+export type TvSeriesTopRatedListResult = NonNullable<Awaited<ReturnType<typeof tvSeriesTopRatedList>>>
+export type TvSeriesDetailsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesDetails>>>
+export type TvSeriesAccountStatesResult = NonNullable<Awaited<ReturnType<typeof tvSeriesAccountStates>>>
+export type TvSeriesAggregateCreditsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesAggregateCredits>>>
+export type TvSeriesAlternativeTitlesResult = NonNullable<Awaited<ReturnType<typeof tvSeriesAlternativeTitles>>>
+export type TvSeriesChangesResult = NonNullable<Awaited<ReturnType<typeof tvSeriesChanges>>>
+export type TvSeriesContentRatingsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesContentRatings>>>
+export type TvSeriesCreditsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesCredits>>>
+export type TvSeriesEpisodeGroupsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesEpisodeGroups>>>
+export type TvSeriesExternalIdsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesExternalIds>>>
+export type TvSeriesImagesResult = NonNullable<Awaited<ReturnType<typeof tvSeriesImages>>>
+export type TvSeriesKeywordsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesKeywords>>>
+export type TvSeriesLatestIdResult = NonNullable<Awaited<ReturnType<typeof tvSeriesLatestId>>>
+export type ListsCopyResult = NonNullable<Awaited<ReturnType<typeof listsCopy>>>
+export type TvSeriesRecommendationsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesRecommendations>>>
+export type TvSeriesReviewsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesReviews>>>
+export type TvSeriesScreenedTheatricallyResult = NonNullable<Awaited<ReturnType<typeof tvSeriesScreenedTheatrically>>>
+export type TvSeriesSimilarResult = NonNullable<Awaited<ReturnType<typeof tvSeriesSimilar>>>
+export type TvSeriesTranslationsResult = NonNullable<Awaited<ReturnType<typeof tvSeriesTranslations>>>
+export type TvSeriesVideosResult = NonNullable<Awaited<ReturnType<typeof tvSeriesVideos>>>
+export type TvSeriesWatchProvidersResult = NonNullable<Awaited<ReturnType<typeof tvSeriesWatchProviders>>>
+export type TvSeriesAddRatingResult = NonNullable<Awaited<ReturnType<typeof tvSeriesAddRating>>>
+export type TvSeriesDeleteRatingResult = NonNullable<Awaited<ReturnType<typeof tvSeriesDeleteRating>>>
+export type TvSeasonDetailsResult = NonNullable<Awaited<ReturnType<typeof tvSeasonDetails>>>
+export type TvSeasonAccountStatesResult = NonNullable<Awaited<ReturnType<typeof tvSeasonAccountStates>>>
+export type TvSeasonAggregateCreditsResult = NonNullable<Awaited<ReturnType<typeof tvSeasonAggregateCredits>>>
+export type TvSeasonChangesByIdResult = NonNullable<Awaited<ReturnType<typeof tvSeasonChangesById>>>
+export type TvSeasonCreditsResult = NonNullable<Awaited<ReturnType<typeof tvSeasonCredits>>>
+export type TvSeasonExternalIdsResult = NonNullable<Awaited<ReturnType<typeof tvSeasonExternalIds>>>
+export type TvSeasonImagesResult = NonNullable<Awaited<ReturnType<typeof tvSeasonImages>>>
+export type TvSeasonTranslationsResult = NonNullable<Awaited<ReturnType<typeof tvSeasonTranslations>>>
+export type TvSeasonVideosResult = NonNullable<Awaited<ReturnType<typeof tvSeasonVideos>>>
+export type TvSeasonWatchProvidersResult = NonNullable<Awaited<ReturnType<typeof tvSeasonWatchProviders>>>
+export type TvEpisodeDetailsResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeDetails>>>
+export type TvEpisodeAccountStatesResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeAccountStates>>>
+export type TvEpisodeChangesByIdResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeChangesById>>>
+export type TvEpisodeCreditsResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeCredits>>>
+export type TvEpisodeExternalIdsResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeExternalIds>>>
+export type TvEpisodeImagesResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeImages>>>
+export type TvEpisodeTranslationsResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeTranslations>>>
+export type TvEpisodeVideosResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeVideos>>>
+export type TvEpisodeAddRatingResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeAddRating>>>
+export type TvEpisodeDeleteRatingResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeDeleteRating>>>
+export type TvEpisodeGroupDetailsResult = NonNullable<Awaited<ReturnType<typeof tvEpisodeGroupDetails>>>
+export type WatchProvidersAvailableRegionsResult = NonNullable<Awaited<ReturnType<typeof watchProvidersAvailableRegions>>>
+export type WatchProvidersMovieListResult = NonNullable<Awaited<ReturnType<typeof watchProvidersMovieList>>>
+export type WatchProviderTvListResult = NonNullable<Awaited<ReturnType<typeof watchProviderTvList>>>

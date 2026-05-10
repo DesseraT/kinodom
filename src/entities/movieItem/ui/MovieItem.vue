@@ -6,7 +6,7 @@
       <img
         :src="posterUrl"
         :alt="title"
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 poster-image"
         loading="lazy"
       />
     </div>
@@ -20,7 +20,7 @@
       <span>{{ type }}</span>
 
       <span>•</span>
-      <span class="truncate max-w-[180px]">
+      <span class="truncate max-w-[180px]" v-if="genres.length > 0">
         {{ genres.join(', ') }}
       </span>
     </div>
@@ -38,3 +38,12 @@ import type { IMovie } from '../model/types'
 
 defineProps<IMovie>()
 </script>
+
+<style>
+.poster-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+</style>

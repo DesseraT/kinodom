@@ -1,21 +1,45 @@
-import axios from 'axios'
-import type { AxiosRequestConfig } from 'axios'
+import Axios, { type AxiosRequestConfig, AxiosError } from 'axios'
+interface CancelablePromise<T> extends Promise<T> {
+  cancel: () => void
+}
 
-export const AXIOS_INSTANCE = axios.create({
+const DEFAULT_LANGUAGE = 'ru-Ru'
+export const AXIOS_INSTANCE = Axios.create({
   baseURL: 'https://api.themoviedb.org/3',
-  headers: {
-    accept: 'application/json',
-    Authorization: `Bearer ${import.meta.VITE_TMDB_API_KEY}`,
-  },
 })
+// Request interceptor for auth
+AXIOS_INSTANCE.interceptors.request.use(
+  (config) => {
+    const token = import.meta.env.VITE_TMDB_API_KEY
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    config.params = {
+      language: DEFAULT_LANGUAGE,
+      ...config.params,
+    }
+    return config
+  },
+  (error) => Promise.reject(error),
+)
 
-export const tmdbClient = <T>(config: AxiosRequestConfig): Promise<T> => {
-  const source = axios.CancelToken.source()
-  const promise = AXIOS_INSTANCE({ ...config, cancelToken: source.token }).then(({ data }) => data)
+export const tmdbClient = <T>(
+  config: AxiosRequestConfig,
+  options?: AxiosRequestConfig,
+): CancelablePromise<T> => {
+  const controller = new AbortController()
+
+  const promise = AXIOS_INSTANCE({
+    ...config,
+    ...options,
+  }).then(({ data }) => data) as CancelablePromise<T>
 
   promise.cancel = () => {
-    source.cancel('Query was cancelled by Orval')
+    controller.abort('Query was cancelled')
   }
 
   return promise
 }
+
+export type ErrorType<Error> = AxiosError<Error>
+export type BodyType<BodyData> = BodyData

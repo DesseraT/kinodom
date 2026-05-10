@@ -2,8 +2,8 @@ interface IMovie {
   id: number
   title: string
   posterUrl: string
-  rating: number
   type: string
-  genres: string[]
+  rating: number
+  genres: Capitalize<string>[]
 }
 export type { IMovie }

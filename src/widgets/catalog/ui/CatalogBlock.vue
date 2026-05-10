@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useMoviesStore } from '@/features/movieList/model/movieStore'
 import { MovieList } from '@/features/movieList'
 import { MyBtn } from '@/shared/btn'
 
 const moviesStore = useMoviesStore()
-
-onMounted(() => {
-  moviesStore.getMoviesByGenre('movie', 35)
-  moviesStore.getMoviesByGenre('movie', 28)
-})
 </script>
 
 <template>
@@ -17,8 +11,27 @@ onMounted(() => {
     <div class="max-w-7xl mx-auto">
       <h2 class="text-3xl font-bold mb-12 tracking-tight">Каталог фильмов и сериалов</h2>
       <div class="max-w-7xl mx-auto px-6 md:px-10 space-y-12 overflow-hidden">
-        <MovieList title="Комедии" :movies="moviesStore.moviesByGenre[35] || []" />
-        <MovieList title="Боевики" :movies="moviesStore.moviesByGenre[28] || []" />
+        <!-- while genres are not loaded ref for scroll inside would be the same for every MovieList = unexpected behavior -->
+        <MovieList
+          :title="moviesStore.movieGenres[35] || '35'"
+          :movies="moviesStore.moviesByGenre[35] || []"
+        />
+        <MovieList
+          :title="moviesStore.movieGenres[18] || '18'"
+          :movies="moviesStore.moviesByGenre[18] || []"
+        />
+        <MovieList
+          :title="moviesStore.movieGenres[14] || '14'"
+          :movies="moviesStore.moviesByGenre[14] || []"
+        />
+        <MovieList
+          :title="moviesStore.movieGenres[53] || '53'"
+          :movies="moviesStore.moviesByGenre[53] || []"
+        />
+        <MovieList
+          :title="moviesStore.tvGenres[9648] || '9648'"
+          :movies="moviesStore.tvShowsByGenre[9648] || []"
+        />
       </div>
       <MyBtn :text="'Посмотреть еще'" :type="'outline'" />
     </div>

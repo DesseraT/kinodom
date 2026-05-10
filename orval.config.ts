@@ -6,10 +6,11 @@ export default defineConfig({
       target: 'https://developer.themoviedb.org/openapi/tmdb-api.json',
     },
     output: {
-      mode: 'single',
+      mode: 'split',
       target: './src/shared/api/tmdb.ts',
       schemas: './src/shared/model/types',
-      client: 'axios',
+      //with setted client and axios value it was generation all in 1 wrapper fabric-function -> bad to use
+      // client: 'axios',
       baseUrl: 'https://api.themoviedb.org',
       override: {
         mutator: {
