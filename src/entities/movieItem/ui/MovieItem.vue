@@ -4,7 +4,7 @@
       class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-3 border border-white/5 bg-white/5"
     >
       <img
-        :src="posterUrl"
+        :src="poster_path"
         :alt="title"
         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 poster-image"
         loading="lazy"
@@ -13,14 +13,14 @@
 
     <div class="flex items-center gap-1.5 text-xs font-medium text-gray-400 mb-1 flex-wrap">
       <span class="text-[#ff2c55] font-bold">
-        {{ rating.toFixed(1) }}
+        {{ rating.toFixed(2) }}
       </span>
 
       <span>•</span>
       <span>{{ type }}</span>
 
       <span>•</span>
-      <span class="truncate max-w-[180px]" v-if="genres.length > 0">
+      <span class="truncate max-w-[180px]" v-if="genres?.length > 0">
         {{ genres.join(', ') }}
       </span>
     </div>
@@ -35,7 +35,6 @@
 
 <script setup lang="ts">
 import type { IMovie } from '../model/types'
-
 defineProps<IMovie>()
 </script>
 

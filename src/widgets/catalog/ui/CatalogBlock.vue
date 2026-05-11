@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMoviesStore } from '@/features/movieList/model/movieStore'
+import { useMoviesStore } from '@/entities/movieItem/model/moviesStore'
 import { MovieList } from '@/features/movieList'
 import { MyBtn } from '@/shared/btn'
 
