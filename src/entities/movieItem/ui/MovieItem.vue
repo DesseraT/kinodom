@@ -1,5 +1,8 @@
 <template>
-  <div class="group flex flex-col w-full cursor-pointer text-white">
+  <div
+    class="group flex flex-col w-full cursor-pointer text-white"
+    @click="$router.push(`/about/${id}`)"
+  >
     <div
       class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-3 border border-white/5 bg-white/5"
     >

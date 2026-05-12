@@ -17,7 +17,7 @@
         {{ subDescription }}
       </p>
     </div>
-    <MyBtn :text="btn.text" :type="btn.type" />
+    <MyBtn :type="btn.type">{{ btn.text }}</MyBtn>
   </div>
 </template>
 

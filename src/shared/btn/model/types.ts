@@ -1,5 +1,5 @@
 interface IBtnProps {
-  text: string | number
+  text?: string | number
   type: 'primary' | 'outline'
 }
 export type { IBtnProps }

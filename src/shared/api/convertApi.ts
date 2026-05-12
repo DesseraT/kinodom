@@ -83,7 +83,6 @@ export const parseQuired = (
   movieGenres: IGenreMap,
   tvGenres: IGenreMap,
 ) => {
-  console.log(data)
   const people = data.filter((el) => el.media_type == 'person')
   const movies = data.filter((el) => el.media_type == 'movie')
   const tvShows = data.filter((el) => el.media_type == 'tv')
@@ -91,4 +90,21 @@ export const parseQuired = (
     movies: [...parseMovieTvList(movies, movieGenres), ...parseMovieTvList(tvShows, tvGenres)],
     people: parsePeople(people),
   }
+}
+export interface IMovieProps {
+  title: string
+  backdrop_path: string
+  poster_path: string
+  release_date: string
+  runtime: number
+  overview: string
+  genres: IGenre[]
+  vote_average: number
+  tagline: string
+  budget: number
+  revenue: number
+  status: string
+}
+export const parseMovieDetails = (data: any[]): IMovieProps => {
+  return data
 }

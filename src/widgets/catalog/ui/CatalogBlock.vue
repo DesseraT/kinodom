@@ -10,7 +10,7 @@ const moviesStore = useMoviesStore()
   <section class="w-full text-white py-16 px-10">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-3xl font-bold mb-12 tracking-tight">Каталог фильмов и сериалов</h2>
-      <div class="max-w-7xl mx-auto px-6 md:px-10 space-y-12 overflow-hidden">
+      <div class="max-w-7xl space-y-12 overflow-hidden">
         <!-- while genres are not loaded ref for scroll inside would be the same for every MovieList = unexpected behavior -->
         <MovieList
           :title="moviesStore.movieGenres[35] || '35'"
@@ -33,7 +33,7 @@ const moviesStore = useMoviesStore()
           :movies="moviesStore.tvShowsByGenre[9648] || []"
         />
       </div>
-      <MyBtn :text="'Посмотреть еще'" :type="'outline'" />
+      <MyBtn :type="'outline'">Посмотреть еще</Mybtn>
     </div>
   </section>
 </template>

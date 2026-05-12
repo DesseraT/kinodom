@@ -9,7 +9,10 @@ const isSearchVisible = ref(false)
   <header
     class="sticky top-0 z-40 grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4 bg-[#0f0b1e] text-white"
   >
-    <div class="text-2xl font-bold tracking-tighter hover:cursor-pointer">
+    <div
+      class="text-2xl font-bold tracking-tighter hover:cursor-pointer"
+      @click="$router.push('/')"
+    >
       КИНО<span class="text-red-600">ДОМ</span>
     </div>
 

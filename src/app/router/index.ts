@@ -17,17 +17,16 @@ const router = createRouter({
       component: LoginPage,
     },
     {
-      path: '/movies/:movieId',
+      path: '/about/:movieId',
       name: 'movie-details',
       component: AboutPage,
       props: true,
     },
-    {
-      path: '/serials/:serialId/episode/:episodeNum',
-      name: 'serial-details',
-      component: AboutPage,
-      props: true,
-    },
+    // {
+    //   path: '/serials/:serialId/episode/:episodeNum',
+    //   name: 'serial-details',
+    //   component: AboutPage,
+    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
