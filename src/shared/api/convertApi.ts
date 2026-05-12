@@ -1,5 +1,5 @@
 import type { IMovie, MovieType, IGenreMap } from '@/entities/movieItem'
-
+import type { SearchMulti200ResultsItem } from '../model/types'
 type PosterSize = `w${number}`
 
 /**
@@ -70,7 +70,7 @@ export const parsePeople = (data: any[]): IPerson[] => {
 
 type MediaType = 'tv' | 'movie' | 'person'
 
-interface IPerson {
+export interface IPerson {
   id: number
   name: string
   gender: number
@@ -78,7 +78,11 @@ interface IPerson {
   known_for_department: string[]
   profile_path: string
 }
-export const parseQuired = (data: any[], movieGenres: IGenreMap, tvGenres: IGenreMap) => {
+export const parseQuired = (
+  data: SearchMulti200ResultsItem[],
+  movieGenres: IGenreMap,
+  tvGenres: IGenreMap,
+) => {
   console.log(data)
   const people = data.filter((el) => el.media_type == 'person')
   const movies = data.filter((el) => el.media_type == 'movie')

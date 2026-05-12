@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { SearchOverlay } from '@/features/search'
+import { SearchIcon, Bell, User2Icon } from 'lucide-vue-next'
 const isSearchVisible = ref(false)
 </script>
 
 <template>
-  <header class="grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4 bg-[#0f0b1e] text-white">
+  <header
+    class="sticky top-0 z-40 grid grid-cols-[auto_1fr_auto] items-center gap-8 py-4 bg-[#0f0b1e] text-white"
+  >
     <div class="text-2xl font-bold tracking-tighter hover:cursor-pointer">
       КИНО<span class="text-red-600">ДОМ</span>
     </div>
@@ -19,15 +22,15 @@ const isSearchVisible = ref(false)
     <div class="flex items-center gap-5">
       <button
         class="flex items-center gap-2 hover:text-gray-400 transition-colors"
-        @click="isSearchVisible = !isSearchVisible"
+        @click="isSearchVisible = true"
       >
-        <span>🔍</span> Поиск
+        <span><SearchIcon :size="20" /></span> Поиск
       </button>
-      <button class="hover:text-gray-400">🔔</button>
+      <button class="hover:text-gray-400"><Bell /></button>
       <div
         class="w-10 h-10 border border-gray-600 rounded-xl flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-all"
       >
-        👤
+        <User2Icon />
       </div>
     </div>
   </header>
