@@ -16,9 +16,13 @@ export const useInfoStore = defineStore('infoStore', () => {
     const { results } = await movieRecommendations(movieId)
     recommendedMovies.value = parseMovieTvList(results, moviesStore.movieGenres)
   }
+  const $reset = () => {
+    movieInfo.value = {}
+  }
   return {
     getMovieInfo,
     movieInfo,
     recommendedMovies,
+    $reset,
   }
 })

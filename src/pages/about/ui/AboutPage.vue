@@ -2,8 +2,8 @@
 import { watch } from 'vue'
 import { Navbar } from '@/widgets/navbar'
 import { Footer } from '@/widgets/footer'
-import { useInfoStore } from '@/entities/movieInfo'
-import { MovieInfo } from '@/entities/movieInfo'
+import { useInfoStore } from '@/features/movieInfo'
+import { MovieInfo } from '@/features/movieInfo'
 const props = defineProps<{
   movieId: string | number
 }>()
@@ -11,7 +11,10 @@ const movieStore = useInfoStore()
 watch(
   () => props.movieId,
   (newId) => {
-    if (newId) movieStore.getMovieInfo(Number(newId))
+    if (newId) {
+      movieStore.$reset()
+      movieStore.getMovieInfo(Number(newId))
+    }
   },
   { immediate: true },
 )
@@ -21,7 +24,7 @@ watch(
   <div>
     <Navbar />
     <MovieInfo
-      v-if="movieStore.movieInfo"
+      v-if="movieStore.movieInfo.id"
       :info="movieStore.movieInfo || {}"
       :recommendedMovies="movieStore.recommendedMovies || []"
     />

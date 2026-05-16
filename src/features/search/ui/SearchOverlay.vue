@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import debounce from 'debounce'
 import { useSearch } from '../model/searchStore'
 import { MovieItem } from '@/entities/movieItem'
 import { X as CloseIcon, SearchIcon } from 'lucide-vue-next'
@@ -8,11 +7,11 @@ import { onMounted, onUnmounted } from 'vue'
 const emit = defineEmits<{
   (e: 'close'): void
 }>()
-const DEBOUNCE_DELAY = 500
+
 const searchStore = useSearch()
 
-const debouncedSearch = debounce(searchStore.search, DEBOUNCE_DELAY)
 onMounted(() => {
+  searchStore.$reset()
   document.body.style.overflow = 'hidden'
 })
 onUnmounted(() => {
@@ -23,11 +22,7 @@ onUnmounted(() => {
 <template>
   <div
     class="fixed inset-0 z-100 overflow-y-auto bg-black/80 backdrop-blur-md text-white px-6 py-10 md:px-20"
-    v-if="
-      searchStore.searchedMovies.length > 0 ||
-      searchStore.searchedPeople.length > 0 ||
-      searchStore.query
-    "
+    v-if="searchStore.movies.length > 0 || searchStore.people.length > 0 || searchStore.query"
   >
     <div class="max-w-7xl mx-auto">
       <header class="flex items-center gap-8 md:gap-20 mb-16">
@@ -45,7 +40,7 @@ onUnmounted(() => {
             type="text"
             placeholder="Название фильма, сериала, или имя актёра, режиссёра"
             class="w-full bg-transparent border-b border-zinc-800 py-3 px-10 outline-none focus:border-white transition-all text-xl placeholder:text-zinc-600"
-            @input="debouncedSearch(searchStore.query)"
+            @input="searchStore.debouncedSearch"
           />
           <button
             @click="() => emit('close')"
@@ -57,14 +52,14 @@ onUnmounted(() => {
       </header>
 
       <main>
-        <section v-if="searchStore.searchedMovies.length > 0" class="mb-20">
+        <section v-if="searchStore.movies.length > 0" class="mb-20">
           <h2 class="text-3xl font-bold mb-10">
             {{ searchStore.query ? `По вашему запросу "${searchStore.query}"` : 'Часто ищут' }}
           </h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-10">
             <MovieItem
-              v-for="movie in searchStore.searchedMovies.slice(0, 6)"
+              v-for="movie in searchStore.movies.slice(0, 6)"
               :key="movie.id"
               v-bind="movie"
               class="hover:opacity-80 transition-opacity cursor-pointer"
@@ -72,7 +67,7 @@ onUnmounted(() => {
           </div>
         </section>
 
-        <section v-if="searchStore.searchedPeople.length > 0">
+        <section v-if="searchStore.people.length > 0">
           <h3
             class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-10 border-b border-zinc-900 pb-4"
           >
@@ -81,7 +76,7 @@ onUnmounted(() => {
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-8">
             <div
-              v-for="person in searchStore.searchedPeople"
+              v-for="person in searchStore.people"
               :key="person.id"
               class="group cursor-pointer flex flex-col gap-1"
             >
@@ -97,9 +92,7 @@ onUnmounted(() => {
 
         <div
           v-if="
-            searchStore.query &&
-            searchStore.searchedMovies.length === 0 &&
-            searchStore.searchedPeople.length === 0
+            searchStore.query && searchStore.movies.length === 0 && searchStore.people.length === 0
           "
           class="mt-20 text-center text-zinc-500"
         >

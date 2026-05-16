@@ -24,7 +24,7 @@ export const parseMovieTvList = (
       poster_path: `https://image.tmdb.org/t/p/${posterSize}/](https://image.tmdb.org/t/p/${posterSize}/${el.poster_path}`,
       type: type,
       rating: el.vote_average,
-      genres: el.genre_ids?.map((g) => genres[g]),
+      genres: el?.genre_ids?.map((g) => genres[g]),
     }
   })
   return narrowedMovies
@@ -79,9 +79,9 @@ export interface IPerson {
   profile_path: string
 }
 export const parseQuired = (
-  data: SearchMulti200ResultsItem[],
-  movieGenres: IGenreMap,
-  tvGenres: IGenreMap,
+  data: SearchMulti200ResultsItem[] = [],
+  movieGenres: IGenreMap = {},
+  tvGenres: IGenreMap = {},
 ) => {
   const people = data.filter((el) => el.media_type == 'person')
   const movies = data.filter((el) => el.media_type == 'movie')

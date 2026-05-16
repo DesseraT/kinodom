@@ -1,9 +1,14 @@
 import { defineStore } from 'pinia'
 import { searchMulti } from '@/shared/api/tmdb'
-import { onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useMoviesStore, type IMovie } from '@/entities/movieItem'
 import { parseQuired } from '@/shared/api/convertApi'
 import type { IPerson } from '@/shared/api/convertApi'
+import debounce from 'debounce'
+const DEBOUNCE_DELAY = 500
+//probaly it`s better to slice data inside component,because store can provide all data in future for another components
+const MOVIE_ITEMS_QUANTITY = 6
+const PEOPLE_ITEMS_QUANTITY = 6
 
 export const useSearch = defineStore('searchStore', () => {
   const { movieGenres, tvGenres, popularMovies } = useMoviesStore()
@@ -13,15 +18,27 @@ export const useSearch = defineStore('searchStore', () => {
   const searchedMovies = ref<IMovie[]>([])
   const searchedPeople = ref<IPerson[]>([])
 
-  onMounted(() => {
-    //get from own request | get from MovieList with Popular search
-    searchedMovies.value = popularMovies.slice(0, 6) // move this slicing to some computed,which will provide only required quantity of data
+  const movies = computed(() => {
+    if (query.value) {
+      return searchedMovies.value.slice(0, MOVIE_ITEMS_QUANTITY)
+    }
+    return popularMovies.slice(0, 6)
   })
+  const people = computed(() => {
+    if (query.value) {
+      return searchedPeople.value.slice(0, PEOPLE_ITEMS_QUANTITY)
+    }
+    return []
+  })
+  const $reset = () => {
+    query.value = ''
+  }
 
-  const search = async (searchQuery: string) => {
-    query.value = searchQuery.trim()
+  const search = async () => {
+    query.value.trim()
     if (!query.value) {
-      searchedMovies.value = popularMovies.slice(0, 6)
+      searchedMovies.value = popularMovies
+      searchedPeople.value = []
     }
     if (currentRequest) {
       currentRequest.cancel()
@@ -29,10 +46,6 @@ export const useSearch = defineStore('searchStore', () => {
     try {
       currentRequest = searchMulti({ query: query.value })
       const { results } = await currentRequest
-      /* how to prevent IDE warnings?
-      like Argument of type 'SearchMulti200ResultsItem[] | undefined' is not assignable to parameter of type 'SearchMulti200ResultsItem[]
-      api provides type with all optional keys
-      */
       const parsed = parseQuired(results, movieGenres, tvGenres)
 
       searchedMovies.value = parsed.movies.slice(0, 6)
@@ -41,11 +54,13 @@ export const useSearch = defineStore('searchStore', () => {
       console.error(`search error with query ${query.value} and message:`, e)
     }
   }
+  const debouncedSearch = debounce(search, DEBOUNCE_DELAY)
 
   return {
     query,
-    search,
-    searchedMovies,
-    searchedPeople,
+    debouncedSearch,
+    movies,
+    people,
+    $reset,
   }
 })
