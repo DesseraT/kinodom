@@ -5,8 +5,8 @@ interface IMovie {
   poster_path: string
   type: MovieType
   rating: number
-  genres: Capitalize<string>[]
+  genres: string[]
 }
-type IGenreMap = Record<number, Capitalize<string>>
+type IGenreMap = Record<number, string>
 
 export type { IMovie, MovieType, IGenreMap }

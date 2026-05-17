@@ -5,6 +5,7 @@ import { useMoviesStore, type IMovie } from '@/entities/movieItem'
 import { parseQuired } from '@/shared/api/convertApi'
 import type { IPerson } from '@/shared/api/convertApi'
 import debounce from 'debounce'
+import type { SearchMulti200ResultsItem } from '@/shared/model/types'
 const DEBOUNCE_DELAY = 500
 //probaly it`s better to slice data inside component,because store can provide all data in future for another components
 const MOVIE_ITEMS_QUANTITY = 6
@@ -12,7 +13,6 @@ const PEOPLE_ITEMS_QUANTITY = 6
 
 export const useSearch = defineStore('searchStore', () => {
   const { movieGenres, tvGenres, popularMovies } = useMoviesStore()
-
   let currentRequest: ReturnType<typeof searchMulti> | null = null
   const query = ref('')
   const searchedMovies = ref<IMovie[]>([])
@@ -46,7 +46,7 @@ export const useSearch = defineStore('searchStore', () => {
     try {
       currentRequest = searchMulti({ query: query.value })
       const { results } = await currentRequest
-      const parsed = parseQuired(results, movieGenres, tvGenres)
+      const parsed = parseQuired(results as SearchMulti200ResultsItem[], movieGenres, tvGenres)
 
       searchedMovies.value = parsed.movies.slice(0, 6)
       searchedPeople.value = parsed.people.slice(0, 6)

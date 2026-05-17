@@ -8,15 +8,18 @@ import {
   moviePopularList,
 } from '@/shared/api/tmdb'
 import type {
-  // GenreMovieList200GenresItem,
+  DiscoverMovie200ResultsItem,
   DiscoverMovieParams,
   DiscoverTvParams,
 } from '@/shared/model/types'
 import type { IGenreMap, IMovie } from '@/entities/movieItem'
 import { parseMovieTvList } from '@/shared/api/convertApi'
 
-function capitalize(str: string) {
-  return str[0].toUpperCase() + str.slice(1)
+function capitalize(str: string): string {
+  if (!str) {
+    return ''
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 export const useMoviesStore = defineStore('movies', () => {
@@ -26,30 +29,31 @@ export const useMoviesStore = defineStore('movies', () => {
   const tvGenres = ref<IGenreMap>({})
   const popularMovies = ref<IMovie[]>([])
 
-  onMounted(async () => {
-    await getMovieGenres()
-    await gettvGenres()
-    getMoviesByGenre(35)
-    getMoviesByGenre(18)
-    getMoviesByGenre(14)
-    getMoviesByGenre(53)
-    getTVShowsByGenre(9648)
+  onMounted(() => {
+    getMovieGenres()
+    getTvGenres()
     getPopular()
   })
 
   const getMovieGenres = async () => {
+    //prevent extra request
+    // if()
     const { genres } = await genreMovieList()
     if (genres) {
       genres.forEach((g) => {
-        movieGenres.value[g.id] = capitalize(g.name)
+        if (g.id !== undefined && g.name !== undefined) {
+          movieGenres.value[g.id] = capitalize(g.name) ?? ''
+        }
       })
     }
   }
-  const gettvGenres = async () => {
+  const getTvGenres = async () => {
     const { genres } = await genreTvList()
     if (genres) {
       genres.forEach((g) => {
-        tvGenres.value[g.id] = capitalize(g.name)
+        if (g.id !== undefined && g.name !== undefined) {
+          tvGenres.value[g.id] = capitalize(g.name) ?? ''
+        }
       })
     }
   }
@@ -70,13 +74,16 @@ export const useMoviesStore = defineStore('movies', () => {
     }
     const { results } = await discoverTv(params)
     if (results) {
-      tvShowsByGenre.value[genreId] = parseMovieTvList(results, tvGenres.value, 'Сериал', 'w200')
+      tvShowsByGenre.value[genreId] = parseMovieTvList(results, tvGenres.value, 'tv', 'w200')
     }
   }
   const getPopular = async () => {
     try {
       const { results } = await moviePopularList()
-      popularMovies.value = parseMovieTvList(results, movieGenres.value)
+      popularMovies.value = parseMovieTvList(
+        results as DiscoverMovie200ResultsItem[],
+        movieGenres.value,
+      )
     } catch (error) {
       console.log('getPopular', error)
     }
@@ -88,5 +95,8 @@ export const useMoviesStore = defineStore('movies', () => {
     movieGenres,
     tvGenres,
     popularMovies,
+    getMoviesByGenre,
+    getTVShowsByGenre,
+    getPopular,
   }
 })
