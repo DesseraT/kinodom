@@ -1,2 +1,2 @@
-import Footer from "./ui/Footer.vue";
-export {Footer}
+import Footer from './ui/Footer.vue'
+export { Footer }

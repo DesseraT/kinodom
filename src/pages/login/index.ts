@@ -1,2 +1,2 @@
-import LoginPage from "./ui/LoginPage.vue";
-export {LoginPage}
+import LoginPage from './ui/LoginPage.vue'
+export { LoginPage }
