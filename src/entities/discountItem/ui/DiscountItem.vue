@@ -3,6 +3,7 @@
     <img
       class="w-16 h-16 rounded-full bg-[#1c182a] flex items-center justify-center mb-6 text-3xl border border-[#232034]"
       :src="icon"
+      loading="lazy"
     />
 
     <div class="flex-grow space-y-4 mb-8">
@@ -16,7 +17,7 @@
         {{ subDescription }}
       </p>
     </div>
-    <MyBtn :text="btn.text" :type="btn.type" />
+    <MyBtn :type="btn.type">{{ btn.text }}</MyBtn>
   </div>
 </template>
 

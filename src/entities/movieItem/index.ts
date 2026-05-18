@@ -1,4 +1,5 @@
 import MovieItem from './ui/MovieItem.vue'
-import type { IMovie } from './model/types'
-export { MovieItem }
-export type { IMovie }
+import { useMoviesStore } from './model/moviesStore'
+import type { IMovie, IGenreMap, MovieType } from './model/types'
+export { MovieItem, useMoviesStore }
+export type { IMovie, IGenreMap, MovieType }

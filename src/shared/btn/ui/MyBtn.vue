@@ -7,7 +7,7 @@
         type === 'outline',
     }"
   >
-    {{ text }}
+    <slot></slot>
   </button>
 </template>
 

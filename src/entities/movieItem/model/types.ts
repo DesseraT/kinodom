@@ -1,9 +1,12 @@
+type MovieType = 'Фильм' | 'Сериал'
 interface IMovie {
   id: number
   title: string
-  posterUrl: string
+  poster_path: string
+  type: MovieType
   rating: number
-  type: string
   genres: string[]
 }
-export type { IMovie }
+type IGenreMap = Record<number, string>
+
+export type { IMovie, MovieType, IGenreMap }
