@@ -14,11 +14,13 @@
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
-    "gen:API": "orval"
+    "gen:API": "orval",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
     "debounce": "^3.0.0",
+    "husky": "^9.1.7",
     "lucide-vue-next": "^1.0.0",
     "pinia": "^3.0.4",
     "swiper": "^12.1.4",
