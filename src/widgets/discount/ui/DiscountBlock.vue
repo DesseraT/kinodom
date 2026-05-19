@@ -4,7 +4,7 @@
       <h2 class="text-3xl font-bold mb-12 tracking-tight text-white">Скидки на кино</h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 justify-items-start">
-        <DiscountItem v-for="discount in discounts" v-bind="discount" />
+        <DiscountItem v-for="discount in discounts" v-bind="discount" :key="discount.description" />
       </div>
     </div>
   </section>
