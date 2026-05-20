@@ -8,6 +8,7 @@
     }"
   >
     <slot></slot>
+    {{ text }}
   </button>
 </template>
 

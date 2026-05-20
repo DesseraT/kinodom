@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import { useMoviesStore } from '@/entities/movieItem/model/moviesStore'
 import { MovieList } from '@/features/movieList'
-import { MyBtn } from '@/shared/btn'
+import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
 import { computed, onMounted } from 'vue'
-import {COMEDY_GENRE_ID, DRAMA_GENRE_ID, FANTASY_GENRE_ID, TRILLER_GENRE_ID, DETECTIVE_GENRE_ID} from '../model/const'
+import {
+  COMEDY_GENRE_ID,
+  DRAMA_GENRE_ID,
+  FANTASY_GENRE_ID,
+  TRILLER_GENRE_ID,
+  DETECTIVE_GENRE_ID,
+} from '../model/const'
 const moviesStore = useMoviesStore()
-const isMovieDataEmpty = computed(()=> {
-return Object.keys(moviesStore.moviesByGenre).length == 0
+const isMovieDataEmpty = computed(() => {
+  return Object.keys(moviesStore.moviesByGenre).length == 0
 })
 onMounted(() => {
-  if(isMovieDataEmpty.value) {
+  if (isMovieDataEmpty.value) {
     moviesStore.getMoviesByGenre(COMEDY_GENRE_ID)
     moviesStore.getMoviesByGenre(DRAMA_GENRE_ID)
     moviesStore.getMoviesByGenre(FANTASY_GENRE_ID)
@@ -46,7 +52,7 @@ onMounted(() => {
           :movies="moviesStore.tvShowsByGenre[DETECTIVE_GENRE_ID] || []"
         />
       </div>
-      <MyBtn :type="'outline'">Посмотреть еще</Mybtn>
+      <PrimaryOutlineBtn :type="'outline'">Посмотреть еще</PrimaryOutlineBtn>
     </div>
   </section>
 </template>

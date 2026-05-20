@@ -17,12 +17,12 @@
         {{ subDescription }}
       </p>
     </div>
-    <MyBtn :type="btn.type">{{ btn.text }}</MyBtn>
+    <PrimaryOutlineBtn :type="btn.type">{{ btn.text }}</PrimaryOutlineBtn>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { IDiscountItem } from '../model/types.ts'
-import { MyBtn } from '@/shared/btn/'
+import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
 defineProps<IDiscountItem>()
 </script>

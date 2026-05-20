@@ -1,28 +1,32 @@
 <script setup lang="ts">
 import type { IMovieProps } from '@/shared/api/convertApi'
-import { MyBtn } from '@/shared/btn'
-import { Play,Ticket,Heart } from 'lucide-vue-next';
-import { computed } from 'vue';
-import {MovieList} from '@/features/movieList'
-import type { IMovie } from '@/entities/movieItem';
+import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
+import { Play, Ticket, Heart } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { MovieList } from '@/features/movieList'
+import type { IMovie } from '@/entities/movieItem'
 const props = defineProps<{
-  info: IMovieProps,
+  info: IMovieProps
   recommendedMovies: IMovie[]
-}>();
-const formattedDate =  computed(() => {
+}>()
+const formattedDate = computed(() => {
   return props.info.release_date.split('-').reverse().join('-')
-});
+})
 
 const formattedRuntime = computed(() => {
-  const hours = Math.floor(props.info.runtime / 60);
-  const minutes = props.info.runtime % 60;
-  return `${hours} ч ${minutes} мин`;
-});
+  const hours = Math.floor(props.info.runtime / 60)
+  const minutes = props.info.runtime % 60
+  return `${hours} ч ${minutes} мин`
+})
 
 const formatCurrency = (value: number) => {
-  if (!value) return '-';
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
-};
+  if (!value) return '-'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(value)
+}
 </script>
 
 <template>
@@ -51,15 +55,17 @@ const formatCurrency = (value: number) => {
             <span>•</span>
             <span class="text-nowrap">{{ formattedDate }}</span>
             <span>•</span>
-            <span >{{ info.genres.map((g) => g.name).join(', ') }}</span>
+            <span>{{ info.genres.map((g) => g.name).join(', ') }}</span>
             <span>•</span>
             <span class="text-nowrap">{{ formattedRuntime }}</span>
           </div>
           <div class="flex flex-wrap gap-4">
-            <MyBtn :type="'primary'" class="w-50 flex items-center justify-center gap-1">Смотреть фильм <Play/></Mybtn>
-            <MyBtn :type="'outline'" >Трейлер</Mybtn>
-            <MyBtn :type="'outline'" ><Ticket/></Mybtn>
-            <MyBtn :type="'outline'" ><Heart/></Mybtn>
+            <PrimaryOutlineBtn :type="'primary'" class="w-50 flex items-center justify-center gap-1"
+              >Смотреть фильм <Play
+            /></PrimaryOutlineBtn>
+            <PrimaryOutlineBtn :type="'outline'">Трейлер</PrimaryOutlineBtn>
+            <PrimaryOutlineBtn :type="'outline'"><Ticket /></PrimaryOutlineBtn>
+            <PrimaryOutlineBtn :type="'outline'"><Heart /></PrimaryOutlineBtn>
           </div>
         </div>
       </div>
@@ -111,7 +117,11 @@ const formatCurrency = (value: number) => {
           </div>
         </div>
       </div>
-      <MovieList v-if="recommendedMovies?.length > 0" :title="'Похожее'" :movies="recommendedMovies"/>
+      <MovieList
+        v-if="recommendedMovies?.length > 0"
+        :title="'Похожее'"
+        :movies="recommendedMovies"
+      />
     </section>
   </div>
 </template>
