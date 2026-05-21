@@ -3,7 +3,7 @@ import { MainPage } from '@/pages/main/index'
 import { LoginPage } from '@/pages/login/index'
 import { AboutPage } from '@/pages/about/index'
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
