@@ -1,5 +1,22 @@
 pre-commit:
   parallel: false
-  jobs:
-    -name: lint frontend
-    run: npm run format
+  commands:
+    format:
+      glob: '*.{js,ts,vue,css}'
+      staged: true
+      run: npx oxlint --write --experimental-cli {staged} && git add {staged}
+
+    oxlint:
+      glob: '*.{js,ts,vue}'
+      staged: true
+      run: npx oxlint --fix {staged} && git add {staged}
+
+    eslint:
+      glob: '*.{js,ts,vue}'
+      staged: true
+      run: npx eslint --fix --cache {staged} && git add {staged}
+
+pre-push:
+  commands:
+    type-check:
+      run: npm run type-check
