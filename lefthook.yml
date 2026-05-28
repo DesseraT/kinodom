@@ -1,20 +1,13 @@
 pre-commit:
   parallel: false
   commands:
-    format:
-      glob: '*.{js,ts,vue,css}'
-      staged: true
-      run: npx oxlint --write --experimental-cli {staged} && git add {staged}
-
     oxlint:
-      glob: '*.{js,ts,vue}'
-      staged: true
-      run: npx oxlint --fix {staged} && git add {staged}
+      glob: '*.{js,ts,vue,css}'
+      run: npx oxlint --fix {staged_files} && git add {staged_files}
 
     eslint:
       glob: '*.{js,ts,vue}'
-      staged: true
-      run: npx eslint --fix --cache {staged} && git add {staged}
+      run: npx eslint --fix --cache --no-error-on-unmatched-pattern {staged_files} && git add {staged_files}
 
 pre-push:
   commands:

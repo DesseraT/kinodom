@@ -22,7 +22,7 @@ type ApiMovieType =
  * @returns narrowed list according to type IMovie
  */
 export const parseMovieTvList = (
-  apiMovies: undefined,
+  apiMovies: ApiMovieType,
   genresMap: IGenreMap,
   type: Exclude<MediaType, 'person'> = 'tv',
   posterSize: PosterSize = 'original',
