@@ -4,7 +4,7 @@ import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
 import { Play, Ticket, Heart } from 'lucide-vue-next'
 import { MovieList } from '@/features/movieList'
 import type { IMovie } from '@/entities/movieItem'
-import { formatDate, formatTime, formatCurrency } from '@/shared/api/utils'
+import { formatDate, formatTime, formatCurrency, prepareImageUrl } from '@/shared/api/utils'
 defineProps<{
   info: IMovieProps
   recommendedMovies: IMovie[]
@@ -15,7 +15,7 @@ defineProps<{
   <div class="min-h-screen bg-[#0f0b1e] text-white">
     <section class="relative h-[650px] w-full overflow-hidden">
       <img
-        :src="`https://image.tmdb.org/t/p/original${info.backdrop_path}`"
+        :src="prepareImageUrl(info.backdrop_path)"
         class="absolute inset-0 h-full w-full object-cover object-top rounded-xl"
         alt="backdrop"
       />

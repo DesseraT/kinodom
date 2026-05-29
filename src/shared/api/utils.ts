@@ -9,6 +9,28 @@ import type {
 } from '../model/types'
 type PosterSize = `w${number}` | 'original'
 type MediaType = 'tv' | 'movie' | 'person'
+export interface IMovieProps {
+  title: string
+  backdrop_path: string
+  poster_path: string
+  release_date: string
+  runtime: number
+  overview: string
+  genres: GenreTvList200GenresItem[]
+  vote_average: number
+  tagline: string
+  budget: number
+  revenue: number
+  status: string
+}
+export interface IPerson {
+  id: number
+  name: string
+  gender: number
+  known_for: IMovie[]
+  known_for_department: string
+  profile_path: string
+}
 type ApiMovieType =
   | DiscoverMovie200ResultsItem
   | DiscoverTv200ResultsItem
@@ -44,9 +66,7 @@ export const parseMovieTvList = (
     narrowedMovies[index] = {
       id: el.id ?? -1,
       title: title,
-      poster_path: el.poster_path
-        ? `https://image.tmdb.org/t/p/${posterSize}/${el.poster_path}`
-        : '',
+      poster_path: el.poster_path ? prepareImageUrl(el.poster_path, posterSize) : '',
       type: computedType == 'movie' ? 'Фильм' : 'Сериал',
       rating: el.vote_average ?? 0,
       genres: el.genre_ids?.map((g) => genresMap[g] ?? '').filter((g) => g !== '') || [],
@@ -77,19 +97,11 @@ export const parsePeople = (
       gender: person.gender ?? -1,
       known_for: known_for,
       known_for_department: person.known_for_department ?? '',
-      profile_path: person.profile_path ?? '',
+      profile_path: person.profile_path ? prepareImageUrl(person.profile_path) : '',
     }
   })
 }
 
-export interface IPerson {
-  id: number
-  name: string
-  gender: number
-  known_for: IMovie[]
-  known_for_department: string
-  profile_path: string
-}
 export const parseQuired = (
   data: SearchMulti200ResultsItem[],
   movieGenres: IGenreMap,
@@ -127,17 +139,7 @@ export const formatCurrency = (value: number) => {
     maximumFractionDigits: 0,
   }).format(value)
 }
-export interface IMovieProps {
-  title: string
-  backdrop_path: string
-  poster_path: string
-  release_date: string
-  runtime: number
-  overview: string
-  genres: GenreTvList200GenresItem[]
-  vote_average: number
-  tagline: string
-  budget: number
-  revenue: number
-  status: string
+
+export const prepareImageUrl = (path: string, size: PosterSize = 'original') => {
+  return `https://image.tmdb.org/t/p/${size}${path}`
 }
