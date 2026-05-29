@@ -1,4 +1,4 @@
-import type { IBtnProps } from '@/shared/btn/index'
+import type { IBtnProps } from '@/shared/primaryOutlineBtn'
 interface IDiscountItem {
   icon: string
   title: string

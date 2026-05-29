@@ -3,7 +3,7 @@ import { MainPage } from '@/pages/main/index'
 import { LoginPage } from '@/pages/login/index'
 import { AboutPage } from '@/pages/about/index'
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -17,17 +17,16 @@ const router = createRouter({
       component: LoginPage,
     },
     {
-      path: '/movies/:movieId',
+      path: '/about/:movieId',
       name: 'movie-details',
       component: AboutPage,
       props: true,
     },
-    {
-      path: '/serials/:serialId/episode/:episodeNum',
-      name: 'serial-details',
-      component: AboutPage,
-      props: true,
-    },
+    // {
+    //   path: '/serials/:serialId/episode/:episodeNum',
+    //   name: 'serial-details',
+    //   component: AboutPage,
+    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',

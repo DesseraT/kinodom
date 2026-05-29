@@ -4,6 +4,7 @@
       class="w-16 h-16 rounded-full bg-[#1c182a] flex items-center justify-center mb-1 text-4xl shadow-[0_0_20px_1px_rgba(33,180,253,0.3)] border border-[#232034]"
       :src="img"
       v-if="img"
+      loading="lazy"
     />
     <h3 class="text-xl font-semibold tracking-tight mt-2">{{ label }}</h3>
     <p class="text-sm text-gray-400 leading-relaxed max-w-280px">

@@ -20,7 +20,7 @@
     <div class="h-px bg-white/10 my-8 w-full"></div>
 
     <div class="flex items-center justify-between gap-4">
-      <MyBtn :text="'Оформить подписку'" :type="'primary'" />
+      <PrimaryOutlineBtn :type="'primary'">Оформить подписку</PrimaryOutlineBtn>
       <div class="text-2xl font-bold whitespace-nowrap">
         {{ price }}<span class="text-sm ml-1 font-normal text-white/60">₽</span>
       </div>
@@ -30,6 +30,6 @@
 
 <script setup lang="ts">
 import type { IPricingItem } from '../model/types.ts'
-import { MyBtn } from '@/shared/btn'
+import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
 defineProps<IPricingItem>()
 </script>
