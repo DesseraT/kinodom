@@ -1,2 +1,2 @@
-import AboutPage from "./ui/AboutPage.vue";
-export {AboutPage}
+import AboutPage from './ui/AboutPage.vue'
+export { AboutPage }

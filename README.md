@@ -1,4 +1,5 @@
 # 1
+https://glowing-jalebi-1864ce.netlify.app/ deployed
 
 This template should help get you started developing with Vue 3 in Vite.
 

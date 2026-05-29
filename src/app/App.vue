@@ -6,7 +6,4 @@ import '@/app/styles/main.css'
   <router-view to="/"></router-view>
 </template>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>
