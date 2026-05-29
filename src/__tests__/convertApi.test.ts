@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { parseMovieTvList } from '@/shared/api/convertApi'
+import { parseMovieTvList } from '@/shared/api/utils'
 
 const genresMap = {
   28: 'Боевик',

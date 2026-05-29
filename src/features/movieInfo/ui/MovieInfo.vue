@@ -1,32 +1,14 @@
 <script setup lang="ts">
-import type { IMovieProps } from '@/shared/api/convertApi'
+import type { IMovieProps } from '@/shared/api/utils'
 import { PrimaryOutlineBtn } from '@/shared/primaryOutlineBtn'
 import { Play, Ticket, Heart } from 'lucide-vue-next'
-import { computed } from 'vue'
 import { MovieList } from '@/features/movieList'
 import type { IMovie } from '@/entities/movieItem'
-const props = defineProps<{
+import { formatDate, formatTime, formatCurrency } from '@/shared/api/utils'
+defineProps<{
   info: IMovieProps
   recommendedMovies: IMovie[]
 }>()
-const formattedDate = computed(() => {
-  return props.info.release_date.split('-').reverse().join('-')
-})
-
-const formattedRuntime = computed(() => {
-  const hours = Math.floor(props.info.runtime / 60)
-  const minutes = props.info.runtime % 60
-  return `${hours} ч ${minutes} мин`
-})
-
-const formatCurrency = (value: number) => {
-  if (!value) return '-'
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(value)
-}
 </script>
 
 <template>
@@ -53,11 +35,11 @@ const formatCurrency = (value: number) => {
           <div class="flex items-center gap-3 text-zinc-300 mb-8 font-medium">
             <span class="text-red-600 font-bold">{{ info.vote_average.toFixed(1) }}</span>
             <span>•</span>
-            <span class="text-nowrap">{{ formattedDate }}</span>
+            <span class="text-nowrap">{{ formatDate(info.release_date) }}</span>
             <span>•</span>
             <span>{{ info.genres.map((g) => g.name).join(', ') }}</span>
             <span>•</span>
-            <span class="text-nowrap">{{ formattedRuntime }}</span>
+            <span class="text-nowrap">{{ formatTime(info.runtime) }}</span>
           </div>
           <div class="flex flex-wrap gap-4">
             <PrimaryOutlineBtn :type="'primary'" class="w-50 flex items-center justify-center gap-1"

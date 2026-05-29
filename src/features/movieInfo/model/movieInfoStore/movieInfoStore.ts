@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { movieDetails, movieRecommendations } from '@/shared/api/tmdb'
-import { parseMovieTvList } from '@/shared/api/convertApi'
+import { parseMovieTvList } from '@/shared/api/utils'
 import { useMoviesStore } from '@/entities/movieItem'
 import type { DiscoverMovie200ResultsItem } from '@/shared/model/types'
 export const useInfoStore = defineStore('infoStore', () => {

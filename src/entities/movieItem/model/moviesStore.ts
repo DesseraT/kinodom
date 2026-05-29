@@ -13,14 +13,7 @@ import type {
   DiscoverTvParams,
 } from '@/shared/model/types'
 import type { IGenreMap, IMovie } from '@/entities/movieItem'
-import { parseMovieTvList } from '@/shared/api/convertApi'
-
-function capitalize(str: string): string {
-  if (!str) {
-    return ''
-  }
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
+import { parseMovieTvList, capitalize } from '@/shared/api/utils'
 
 export const useMoviesStore = defineStore('movies', () => {
   const moviesByGenre = ref<Record<number, IMovie[]>>({})

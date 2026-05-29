@@ -103,6 +103,30 @@ export const parseQuired = (
     people: parsePeople(people, movieGenres, tvGenres),
   }
 }
+export function capitalize(str: string): string {
+  if (!str) {
+    return ''
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+export const formatDate = (date: string) => {
+  return date.split('-').reverse().join('-')
+}
+
+export const formatTime = (time: number) => {
+  const hours = Math.floor(time / 60)
+  const minutes = time % 60
+  return `${hours} ч ${minutes} мин`
+}
+
+export const formatCurrency = (value: number) => {
+  if (!value) return '-'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(value)
+}
 export interface IMovieProps {
   title: string
   backdrop_path: string
