@@ -1,4 +1,5 @@
 import Axios, { type AxiosRequestConfig, AxiosError } from 'axios'
+import * as Sentry from '@sentry/vue'
 interface CancelablePromise<T> extends Promise<T> {
   cancel: () => void
 }
@@ -22,7 +23,41 @@ AXIOS_INSTANCE.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 )
+AXIOS_INSTANCE.interceptors.response.use(
+  (response) => response,
+  (error: AxiosError) => {
+    if (Axios.isCancel(error) || error.message === 'Query was cancelled') {
+      return Promise.reject(error)
+    }
 
+    const status = error.response?.status
+
+    if (status === 401) {
+      Sentry.withScope((scope) => {
+        scope.setLevel('fatal')
+        scope.setTag('api_client', 'tmdb')
+        Sentry.captureMessage('TMDB API Key is invalid or expired!')
+      })
+    }
+
+    if (!status || status >= 500) {
+      Sentry.withScope((scope) => {
+        scope.setTag('api_client', 'tmdb')
+        scope.setContext('tmdb_request_details', {
+          url: error.config?.url,
+          method: error.config?.method,
+          params: error.config?.params,
+          status: status || 'Network Error',
+        })
+
+        Sentry.captureException(error)
+      })
+    }
+
+    // Обязательно пробрасываем ошибку дальше, чтобы её перехватил catch во Vue-компоненте
+    return Promise.reject(error)
+  },
+)
 export const tmdbClient = <T>(
   config: AxiosRequestConfig,
   options?: AxiosRequestConfig,

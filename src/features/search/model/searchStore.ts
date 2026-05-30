@@ -6,6 +6,7 @@ import { parseQuired } from '@/shared/api/utils'
 import type { IPerson } from '@/shared/api/utils'
 import debounce from 'debounce'
 import type { SearchMulti200ResultsItem } from '@/shared/model/types'
+import * as Sentry from '@sentry/vue'
 const DEBOUNCE_DELAY = 500
 //probaly it`s better to slice data inside component,because store can provide all data in future for another components
 const MOVIE_ITEMS_QUANTITY = 6
@@ -50,8 +51,8 @@ export const useSearch = defineStore('searchStore', () => {
 
       searchedMovies.value = parsed.movies.slice(0, 6)
       searchedPeople.value = parsed.people.slice(0, 6)
-    } catch (e) {
-      console.error(`search error with query ${query.value} and message:`, e)
+    } catch (error) {
+      Sentry.captureException(error)
     }
   }
   const debouncedSearch = debounce(search, DEBOUNCE_DELAY)

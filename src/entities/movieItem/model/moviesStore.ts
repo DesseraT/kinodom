@@ -14,6 +14,7 @@ import type {
 } from '@/shared/model/types'
 import type { IGenreMap, IMovie } from '@/entities/movieItem'
 import { parseMovieTvList, capitalize } from '@/shared/api/utils'
+import * as Sentry from '@sentry/vue'
 
 export const useMoviesStore = defineStore('movies', () => {
   const moviesByGenre = ref<Record<number, IMovie[]>>({})
@@ -78,7 +79,7 @@ export const useMoviesStore = defineStore('movies', () => {
         movieGenres.value,
       )
     } catch (error) {
-      console.log('getPopular', error)
+      Sentry.captureException(error)
     }
   }
 

@@ -19,6 +19,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@sentry/vue": "^10.55.0",
     "@tailwindcss/vite": "^4.2.4",
     "debounce": "^3.0.0",
     "lucide-vue-next": "^1.0.0",

@@ -2,7 +2,11 @@
 import { ref } from 'vue'
 import { SearchOverlay } from '@/features/search'
 import { SearchIcon, Bell, User2Icon } from 'lucide-vue-next'
+import * as Sentry from '@sentry/vue'
 const isSearchVisible = ref(false)
+const go2UserPage = () => {
+  Sentry.captureException(new Error('Тестовая ошибка для проверки Sentry!'))
+}
 </script>
 
 <template>
@@ -32,6 +36,7 @@ const isSearchVisible = ref(false)
       <button class="hover:text-gray-400"><Bell /></button>
       <div
         class="w-10 h-10 border border-gray-600 rounded-xl flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-all"
+        @click="go2UserPage"
       >
         <User2Icon />
       </div>
